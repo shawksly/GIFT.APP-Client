@@ -1,10 +1,13 @@
 // import logo from './logo.svg';
 // import './App.css';
-
+import Login from "./components/auth/login/Login";
 function App() {
   return (
-    <div className="App">
-       <h1 class ='text-3xl bg-color-purple-500'> Hello WORlD! </h1>
+
+    
+    <div>
+
+<Login/>
     </div>
   );
 }
