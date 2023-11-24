@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 
+const { REACT_APP_TARGET_API_KEY, REACT_APP_WM_CONSUMER_ID } = process.env;
+
 function APITest() {
 
   const productResults = {
@@ -230,7 +232,7 @@ function APITest() {
     }
   }
 
-  let targetAPIKey = '3D4EDB1651D84FACBB3C85407EE4A0F7';
+  let targetAPIKey = REACT_APP_TARGET_API_KEY;
   let store = 'none';
 
   const [urlEntry, setUrlEntry] = useState('');
@@ -270,16 +272,6 @@ function APITest() {
 
       console.log(itemNumber);
 
-      //     const properties = {
-      //       'WM_SEC.KEY_VERSION': '1',
-      //       'WM_CONSUMER.ID': '79345dab-a3ac-4c00-a812-94eca553d34d',
-      //       'WM_CONSUMER.INTIMESTAMP': Date.now()
-      //     };
-
-      // let token = jwt.sign(properties, 'MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCx+y2S7/iwaJQHoJ7v8hNzVNyHdYa5SN7pxzl8V2dbXr5aXPhUMO509B4+DD3y6iqBIbRqsnfSzzoKv8CR7qNrBkzZatxUW9HRVibRH6LMr9jjTya2W/y5vWKJ7wnWAcduvEdfCDxUkESXzJF5nps6L0F906CQ+dH+U0I99UR8dT5aTV1kK097Z+Gaszzc5KNRxsyl/0XLSA/lRdBzKXSLPhLzsEzgwpn6Nwdyyqmy2esuI735GqdWycUzxjp52bslnf/OBY/Jweg0HNMlhrkX2qObxLCNzqMqcGhRQJGz0q49E1a2GkgdebLMvLIdDg+n2OlW9YYxfZoz278HLtShAgMBAAECggEABVPdOJ+FzHQI8FSCxXBz3Bkvc7+VHZE8mPdddWchYScMICTVyyFe1fHjwNw5c37GcHCbl7EJbK5G0MEOKOAhlKfO35g3CbBo7rD7PvnJNALUhXNeV4mX3lB4tWPKIdWSTHKG2WWj9q0N3JRjS2Zvw5VcCsHttcFAo7IG0td3ahlEkG2CbI8rNNmt03Du16l4dvE23bItRFMDSBltpWd37hQc0aGh9nVV08+oNBqsIbzLC5BF9onQJ447bluHk/ZcwuIj5hk7ptMIAn1ev656TKh0j3r5E7CCsM0tx3bZ+oSIDBvHZAysHNZ/8kFg4Yilq+8fW+1xpXFLc/wBzphwwQKBgQDb1ALRqdFrofO7TJa9XQbPFcz3hc0c8N7qY3fiMUFre6jcpHuf3dx+Jnq2ru+MeQvJB+W0JcFp+YovIbpBCCMfZHxPqspqBHh3DUEEENCJd1u3BxT2yt7hE1SB4FSBJ0eFprRwIY43AjfBAUoCaXg/HenZ5syDp2ZJysR8JR8xsQKBgQDPRGnzCflakL/6LpAUi7vAzUJyH7Nz/GanPOAR+Eq2OPohoGm+IIPflY5xvxOOLn6XjIrEMrR2s55koi83dp1cZji3YbBM0GNE6TcPPtUM/sdBaVMp/80o6a5OTAo/zjbZjdA0JlXTHqLEk8gkq3VLW3i6SHuJ8YycWu/xqzAd8QKBgBHojK498mSdVfjNPX6BxJs8QG1txg70hIR9w/d2Ycj60v/emn+kmGDii560U6mS9uXSseDiLoaOoLZEPiMsIYheLE5lMIZAhPvV5ZUKNaLtSVh4yDluv4eAhqLp/phi9c2qjgqQgUBz+szLaRcXNoeVzUZGKiUTjx612RnwAEGRAoGAFwyMm7JoQGIId1HmQ+KmJnKtCPPtiOBwqfhjEpyB8nGznzmviK0k/SAsjwmoqw8QlNnUNK1O1ER1QMuoZIqURUo41GvQpzolT+x/avqZxrAuiF+mF+2SaxJRh/N80EumXdsfZC0/LhMiFqo4f5txl8e8TTryQgzSjjCurjlTSIECgYA5sQuY0nhjN/tSSb/PtTQgIAJLUjxsXJZq8Ln16s/MHA2PZLuJ+bNa6/HRjiQNHv5rfYN8xMO5ZW2I74ythwzD6B2ji671Fvxc6b8q18JXJGAyd3d3ikrCHUqoes4f/o/D+RDj6nMxF/KA1ch/XLWI+kfGtOggF9ymnDNWT+f+wg==', {expiresIn: '180s'});
-
-      // console.log('TOKEN#########', token);
-
       let headersStorage = {};
 
       // local server call
@@ -293,7 +285,7 @@ function APITest() {
             method: "POST",
             body: JSON.stringify({
               "ver": "1",
-              "cid": "2d232904-527a-4fd9-a4a7-85a95479fd48"
+              "cid": REACT_APP_WM_CONSUMER_ID
             }),
           }
         );
@@ -341,11 +333,11 @@ function APITest() {
   return (
     <div>
       <form>
-        <label for="urlField">Enter URL:</label>
+        <label htmlFor="urlField">Enter URL:</label>
         <br />
         <input
           type="text"
-          placeholder='URL HERE'
+          placeholder={REACT_APP_WM_CONSUMER_ID}
           name='urlField'
           onChange={(e) => {
             setUrlEntry(e.target.value);
@@ -359,7 +351,7 @@ function APITest() {
       </form>
       <br />
       <form>
-          <label for="titleField">Title:</label>
+          <label htmlFor="titleField">Title:</label>
           <br />
           <input
             type="text"
@@ -368,7 +360,7 @@ function APITest() {
             value={titleEntry}
           />
           <br />
-          <label for="priceField">Price:</label>
+          <label htmlFor="priceField">Price:</label>
           <br />
           <input
             type="text"
@@ -377,7 +369,7 @@ function APITest() {
             value={priceEntry}
           />
           <br />
-          <label for="descField">Description:</label>
+          <label htmlFor="descField">Description:</label>
           <br />
           <input
             type="textarea"
