@@ -3,6 +3,9 @@
 import { Flex, Container } from '@radix-ui/themes';
 import Auth from './components/auth/Auth'
 import Signup from './components/auth/signup/Signup';
+import {BrowserRouter, Routes, Route, Link, Navigate} from 'react-router-dom'
+import Login from './components/auth/login/Login';
+import Home from './components/home/Home'
 
 function App() {
 
@@ -18,30 +21,25 @@ function App() {
 
   }
 
-  return (
-    
+  return ( 
+  
+ 
 
-    <Signup/> 
-    // <Flex
-    //   width="100%"
-    //   height="100%"
-    //   direction="column"
-    //   align="center"
-    //   justify="center"
-    //   className='min-h-screen'
-    // >
-    //   {/* <img src='https://cdn.imgchest.com/files/e4gdcl2w3p4.png' className="h-1/2 p-4">
-    //   </img>
-    //   <Container
-    //     className={`${true ? "class1" : "class2"} h-auth w-screen grow`}
-    //     // style={{height: var(--auth-height)}}
-    //   >
-    //     <h1 className ='text-3xl bg-slate-900 text-white text-center'>GIFT.ME</h1>
-    //     <Auth />
-       
-    //   </Container> */}
-      
-    // </Flex>
+
+
+    <BrowserRouter>
+   
+<Routes>
+<Route path='/' element = {<Home/>} />
+<Route path='Signup' element = {<Signup/>} />
+<Route path='Login' element = {<Login/>} />
+</Routes>
+
+
+    </BrowserRouter>
+
+    
+  
   );
 }
 
