@@ -1,9 +1,11 @@
 // import logo from './logo.svg';
 // import './App.css';
+/*
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Auth from './components/auth/Auth'
 import { Flex, Section, Button } from '@radix-ui/themes';
+*/
 import Signup from './components/auth/signup/Signup';
 import {BrowserRouter, Routes, Route, Link, Navigate} from 'react-router-dom'
 import Login from './components/auth/login/Login';
@@ -15,7 +17,7 @@ function App() {
   const [token, setToken] = useState('');
   const [userId, setUserId] = useState('');
 
-  /*
+  
   // Initialize the isLoggedIn state as false (user is not logged in)
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -45,9 +47,6 @@ function App() {
     // Set the isLoggedIn state to false when the user logs out
     setIsLoggedIn(false);
   }
-
-  function initializeUser() {
-  */
 
   function initializeUser() {
     setToken(localStorage.token);
@@ -115,11 +114,7 @@ function App() {
         />
       </Routes>
     </BrowserRouter>*/
-  return ( 
-  
- 
-
-
+  return (
 
     <BrowserRouter>
    
