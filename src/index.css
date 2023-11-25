@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --auth-height: 50%;
+  --auth-height: 30vh;
+}
+
+.test {
+  /* transition: all 1s; */
+  /* transition: top 2.2s cubic-bezier(.36,-0.01,0,.77); */
+  /* top: 0px; */
+}
+
+.test.closed {
+  /* transition: all 1s; */
+  /* transition: top 2.2s cubic-bezier(.36,-0.01,0,.77); */
+  /* top: calc(var(--auth-height) - var(--auth-height)/10); */
 }
