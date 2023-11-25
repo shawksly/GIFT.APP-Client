@@ -6,6 +6,7 @@ import Signup from './components/auth/signup/Signup';
 import {BrowserRouter, Routes, Route, Link, Navigate} from 'react-router-dom'
 import Login from './components/auth/login/Login';
 import Home from './components/home/Home'
+import ListGroup from './components/listGroup/ListGroup';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
 
   function initializeToken() {
     setToken(localStorage.token);
-    console.log('TOKEN:', localStorage.token);
+    // console.log('TOKEN:', localStorage.token);
 
     // Set the isLoggedIn state based on the presence of the token
     setIsLoggedIn(!!localStorage.token);
@@ -63,9 +64,10 @@ function App() {
     <BrowserRouter>
    
 <Routes>
-<Route path='/' element = {<Home loggedIn={isLoggedIn} token = {token}  />} />
+<Route path='/Home' element = {<Home loggedIn={isLoggedIn} token = {token}  />} />
 <Route path='Signup' element = {<Signup setToken = {updateToken}  />} />
 <Route path='Login' element = {<Login setToken = {updateToken}/>} />
+<Route path='List' element = {<ListGroup setToken = {updateToken}/>} />
 </Routes>
 
 

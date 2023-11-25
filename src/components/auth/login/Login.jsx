@@ -80,11 +80,11 @@ focus:outline-blue-200 transition ease-in-out duration-150 place-content-baselin
               Don't Have Acccount?
               <a
                 className="text-white-500 hover:underline mt-4 px-1"
-                onClick={() => navigate("/Home")}
+                onClick={() => navigate("/Signup")}
                 href="#"
               >
-                {" "}
-                Sign Up{" "}
+                
+                Sign Up
               </a>
             </p>
           </form>
