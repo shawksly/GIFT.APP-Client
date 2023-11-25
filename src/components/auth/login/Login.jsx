@@ -1,3 +1,9 @@
+/*
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { Flex, TextField, Button, IconButton } from '@radix-ui/themes';
+import { DoubleArrowDownIcon } from '@radix-ui/react-icons'
+*/
 import { React, useState } from "react";
 import { useNavigate } from "react-router";
 import PropTypes from "prop-types";
@@ -98,9 +104,12 @@ focus:outline-blue-200 transition ease-in-out duration-150 place-content-baselin
 /* import { useState } from 'react'
 import { Card, TextField, Button } from '@radix-ui/themes';
 
-function Login() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+function Login({ loginPane, setLoginPane, updateUser }) {
+
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   async function processUserLogin(e) {
     e.preventDefault();
@@ -121,9 +130,11 @@ function Login() {
 
       console.log(results);
 
-      // TODO make this do something
-      // if (response.status === 200)
-      //   Navigate("#")
+      if (response.status === 200) {
+        updateUser(results.token, results.user._id);
+        setLoginPane(false);
+        navigate("#");
+      }
 
     } catch (error) {
       console.log(error);
@@ -131,34 +142,54 @@ function Login() {
   };
 
   return (
-    <Card>
-      Email
-      <TextField.Root>
-        <TextField.Input
-          size="3"
-          placeholder="Email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-      </TextField.Root>
-      Password
-      <TextField.Root>
-        <TextField.Input
-          type="password"
-          size="3"
-          placeholder="Password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-      </TextField.Root>
-      <Button
-        onClick={processUserLogin}
+    <div
+      className={`test w-full h-full bg-gray-800/90 absolute border-solid border-2 rounded-lg text-white ${loginPane ? 'top-0 transition-all' : 'top-[calc(var(--auth-height))] transition-all'}`}
+    >
+      <Flex
+        width="100%"
+        height="100%"
+        direction="column"
+        align="center"
+        justify="center"
+        gap="3"
+        // className={`test bg-gray-800/90 absolute border-solid border-2 rounded-lg text-white ${loginPane ? 'top-0 transition-all' : 'top-[calc(var(--auth-height)/2)] transition-all' }`}
       >
-        Login
+        Email
+        <TextField.Root>
+          <TextField.Input
+            size="3"
+            placeholder="Email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </TextField.Root>
+        Password
+        <TextField.Root>
+          <TextField.Input
+            type="password"
+            size="3"
+            placeholder="Password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </TextField.Root>
+        <Button
+          onClick={processUserLogin}
+        >
+          Login
+        </Button>
+      <Button
+        onClick={() => {
+          console.log(setLoginPane);
+          setLoginPane(false);
+        }}
+      >
+        <DoubleArrowDownIcon width="18" height="18" />
       </Button>
-    </Card>
+      </Flex>
+    </div>
   )*/
 }
 

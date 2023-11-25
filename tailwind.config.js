@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        'auth': '--auth-height',
+        'auth': 'var(--auth-height)',
       }
     },
   },
