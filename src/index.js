@@ -18,7 +18,8 @@ root.render(
       panelBackground="translucent"
       scaling="100%"
       radius="medium"
-      appearance="dark"
+      appearance="light"
+      className="overflow-y-hidden"
     >
       {/* <APITest /> */}
       <App />
