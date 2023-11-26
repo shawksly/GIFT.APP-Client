@@ -4,78 +4,11 @@ import './ListGroup.css'
 
 function ListGroup() {
   return (
-    // <div>
-    //   <div className="container">
-    //     <div className="box">
-    //       <h3> Gift Creator List </h3>
-    //       <div className="list">
-    //         <div className="imgBox"></div>
-    //         <div className="info">
-    //           <h2>
-    //             <small> # </small> 1
-    //             <h4> Item Title </h4>
-    //             <p>Item Description</p>
-    //           </h2>
-    //         </div>
-    //       </div>
-    //     </div>
-    //     <div className="list">
-    //       <div className="imgBox"></div>
-    //       <div className="info">
-    //         <h2>
-    //           <small> # </small> 2
-    //           <h4> Item Title </h4>
-    //           <p>Item Description</p>
-    //         </h2>
-    //       </div>
-    //     </div>
-    //   </div>
-    //   <div className="list">
-    //     <div className="imgBox"></div>
-    //     <div className="info">
-    //       <h2>
-    //         <small> # </small> 3
-    //         <h4> Item Title </h4>
-    //         <p>Item Description</p>
-    //       </h2>
-    //     </div>
-    //   </div>
-    //   <div className="list">
-    //     <div className="imgBox"></div>
-    //     <div className="info">
-    //       <h2>
-    //         <small> # </small> 4<h4> Item Title </h4>
-    //         <p>Item Description</p>
-    //       </h2>
-    //     </div>
-    //   </div>
-    //   <div className="list">
-    //     <div className="imgBox"></div>
-    //     <div className="info">
-    //       <h2>
-    //         <small> # </small> 5
-            
-    //         <h4> Item Title </h4>
-    //         <p>Item Description</p>
-    //       </h2>
-    //     </div>
-    //   </div>
-    //   <div className="list">
-    //     <div className="imgBox"></div>
-    //     <div className="info">
-    //       <h2>
-    //         <small> # </small> 6
-            
-    //         <h4> Item Title </h4>
-    //         <p>Item Description</p>
-    //       </h2>
-    //     </div>
-    //   </div>
-    // </div>
+
 <div>
-    <div class="container">
-      <div class="box">
-        <h3>GIFT.LISTS</h3>
+<div className="container min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-800">
+  <div className="box min-w-350 min-h-400 bg-white bg-opacity-25 rounded-2xl z-10 p-8">
+    <h3 className="mb-8 text-white">GIFT.LISTS</h3>
         <div class="list">
           <div class="imgBox">
             {/* <img src="./images/1.jpg" alt=""> */}
