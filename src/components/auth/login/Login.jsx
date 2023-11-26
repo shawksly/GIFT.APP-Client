@@ -55,8 +55,8 @@ function Login(props) {
         </div>
         <div className="w-full max-w-md  bg-slate-700  rounded-xl shadow-md py-8 px-8">
           <h2 className=" text-[28px] font-bold text-purple-100 mb text-center  ">
-            {" "}
-            Sign In{" "}
+            
+            Sign In
           </h2>
           <form onSubmit={LoginInput} className="flex flex-col">
             <input
