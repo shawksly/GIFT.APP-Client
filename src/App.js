@@ -4,10 +4,9 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Auth from './components/auth/Auth'
-import { Flex, Section, Button } from '@radix-ui/themes';
 */
 import Auth from "./components/auth/Auth";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/home/Home";
 import ListGroup from "./components/listGroup/ListGroup";
 import { useState, useEffect, useRef } from "react";
@@ -30,8 +29,9 @@ function App() {
 
     // Set the isLoggedIn state based on the presence of the token
     // setIsLoggedIn(!!localStorage.token);
-    isLoggedIn.current = !!localStorage.token;
-    console.log('!!localStorage.token: ', !!localStorage.token)
+    isLoggedIn.current = localStorage.token ? true : false
+    // isLoggedIn.current = localStorage.token;
+    console.log('localStorage.token: ', localStorage.token)
     console.log('IS LOGGED IN: ', isLoggedIn);
   }
 

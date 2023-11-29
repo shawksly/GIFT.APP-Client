@@ -1,12 +1,14 @@
-import { useState } from 'react'
-import BottomBar from '../bottomBar/BottomBar'
-import ListGroup from '../listGroup/ListGroup'
-import TopNav from '../topNav/TopNav'
-import { useNavigate } from 'react-router';
+import { useState, useEffect, useRef } from "react";
+import BottomBar from "../bottomBar/BottomBar";
+import ListGroup from "../listGroup/ListGroup";
+import AddItem from "../addItem/AddItem";
+import TopNav from "../topNav/TopNav";
+import { useNavigate } from "react-router";
 
 function Home({ isLoggedIn, token, clearUser, userId }) {
-
-  const [lists, setLists] = useState([])
+  const [lists, setLists] = useState([]);
+  const [showTopNav, setShowTopNav] = useState(true);
+  const loginCounter = useRef(0);
 
   let listRoute = `http://localhost:4000/lists/list/owner/${userId}`;
 
@@ -30,7 +32,6 @@ function Home({ isLoggedIn, token, clearUser, userId }) {
         } else {
           console.log("No Results");
         }
-
       } catch (error) {
         console.log(error);
       }
@@ -38,20 +39,19 @@ function Home({ isLoggedIn, token, clearUser, userId }) {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   console.log("logged in TEST ", isLoggedIn);
-  //   if (!isLoggedIn.current) navigate('/auth');
-  // }, []);
+  useEffect(() => {
+    console.log("logged in TEST ", isLoggedIn);
+    loginCounter.current++;
+    if (!isLoggedIn.current && loginCounter.current > 1) navigate("/auth");
+  }, []);
 
   return (
-    <div>
-<TopNav clearUser={clearUser} />
-<ListGroup token={token} fetchLists={fetchLists} lists={lists} />
-<BottomBar />
-
-
-    </div>
-  )
+    <>
+      <TopNav clearUser={clearUser} showTopNav={showTopNav} />
+      <ListGroup token={token} fetchLists={fetchLists} lists={lists} />
+      <BottomBar clearUser={clearUser} />
+    </>
+  );
 }
 
-export default Home
+export default Home;

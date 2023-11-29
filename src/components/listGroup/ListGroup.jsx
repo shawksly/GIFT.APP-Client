@@ -31,6 +31,150 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
             </Fragment>
             )
           })}
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
+          <div className="list">
+            <div className="imgBox">
+              {/* <img src="./images/1.jpg" alt=""> */}
+            </div>
+            <div className="info">
+              <h2>
+                <small>#</small> 1
+              </h2>
+              <h4>Item Title</h4>
+              <p>Item Description</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
