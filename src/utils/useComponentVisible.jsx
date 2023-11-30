@@ -5,11 +5,11 @@ import { useState, useEffect, useRef } from 'react';
 export default function useComponentVisible(initialIsVisible) {
   const [isComponentVisible, setIsComponentVisible] =
     useState(initialIsVisible);
-  const ref = useRef(null);
-  // const dropDownRef = useRef(null);
+  const dropDownRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target)) {
+    if (dropDownRef.current && (!dropDownRef.current.contains(event.target) || buttonRef.current.contains(event.target))) {
       setIsComponentVisible(false);
     }
   };
@@ -21,5 +21,5 @@ export default function useComponentVisible(initialIsVisible) {
     };
   }, []);
 
-  return { ref, isComponentVisible, setIsComponentVisible };
+  return { dropDownRef, buttonRef, isComponentVisible, setIsComponentVisible };
 }
