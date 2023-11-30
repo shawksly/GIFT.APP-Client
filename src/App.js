@@ -11,6 +11,7 @@ import Home from "./components/home/Home";
 import ListGroup from "./components/listGroup/ListGroup";
 import { useState, useEffect, useRef } from "react";
 import AddItem from "./components/addItem/AddItem";
+import AddList from './components/addList/AddList.jsx'
 
 function App() {
   const [token, setToken] = useState("");
@@ -69,6 +70,7 @@ function App() {
         <Route path="/auth" element={<Auth updateUser={updateUser} />} />
         <Route path="/list" element={<ListGroup updateUser={updateUser} />} />
         <Route path="/add" element={<AddItem updateUser={updateUser} />} />
+        <Route path="/addlist" element={<AddList updateUser={updateUser} />} />
       </Routes>
     </BrowserRouter>
   );
