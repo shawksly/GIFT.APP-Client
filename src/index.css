@@ -4,6 +4,9 @@
 
 :root {
   --auth-height: 30vh;
+  --bottom-initial: calc(80% + 19rem);
+  --bottom-animate: calc(-100% - 0.75rem);
+  
 }
 
 .test {
