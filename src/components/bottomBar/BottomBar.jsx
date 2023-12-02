@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import AddItem from '../addItem/AddItem';
 import AddList from '../addList/AddList';
-import AddItem from '../addItem/AddItem 2'; //#################################################
+// import AddItem from '../addItem/AddItem 2'; //#################################################
 import useComponentVisible from '../../utils/useComponentVisible';
 
 function BottomBar({ token, fetchLists, clearUser, name, mail }) {
@@ -40,11 +40,9 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
             className='inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
             <svg
-              className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500'
-            
+              className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 fill-zinc-100'
               aria-hidden='true'
               xmlns='http://www.w3.org/2000/svg'
-              fill='currentColor'
               viewBox='0 0 20 20'
             >
               <path d='m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z' />
@@ -65,7 +63,7 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
             className='inline-flex flex-col items-center justify-center px-5 hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
             <svg
-              className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500'
+              className='w-5 h-5 mb-1 text-zinc-100 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500'
               aria-hidden='true'
               xmlns='http://www.w3.org/2000/svg'
               fill='currentColor'
@@ -186,7 +184,7 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
               viewBox='0 0 20 20'
             >
               <path
-                stroke='currentColor'
+                className='stroke-zinc-100'
                 stroke-linecap='round'
                 stroke-linejoin='round'
                 stroke-width='2'
@@ -205,12 +203,12 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
           </div>
           <div
             role='button'
-            className='px-5 inline-flex flex-col items-center justify-center rounded-e-full hover:bg-gray-50 dark:hover:bg-gray-800 group'
+            className='px-5 inline-flex flex-col items-center justify-center rounded-e-full hover:bg-purple-900 dark:hover:bg-gray-800 group'
             ref={buttonRefUser}
             onClick={() => setIsComponentVisibleUser((prev) => !prev)}
           >
-            <div className='inline-flex flex-col items-center justify-center w-8 h-8 overflow-hidden bg-gray-100 rounded-full border-2 border-gray-500 dark:bg-gray-600 group-hover:border-blue-600 dark:group-hover:border-blue-500'>
-              <span className='font-medium text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 uppercase'>
+            <div className='inline-flex flex-col items-center justify-center w-8 h-8 overflow-hidden bg-transparent rounded-full border-2 border-zinc-100 dark:bg-gray-600 group-hover:border-blue-600 dark:group-hover:border-blue-500'>
+              <span className='font-medium text-zinc-100 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 uppercase'>
                 {name.slice(0, 2)}
               </span>
             </div>
