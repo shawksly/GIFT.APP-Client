@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import AddItem from '../addItem/AddItem';
 import AddList from '../addList/AddList';
+import AddItem from '../addItem/AddItem 2'; //#################################################
 import useComponentVisible from '../../utils/useComponentVisible';
 
 function BottomBar({ token, fetchLists, clearUser, name, mail }) {
@@ -31,15 +32,16 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
 
   return (
     <>
-      <div className='fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-white border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600'>
+      <div className='fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600'>
         <div className='grid h-full max-w-lg grid-cols-5 mx-auto'>
           <button
             data-tooltip-target='tooltip-home'
             type='button'
-            className='inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-gray-50 dark:hover:bg-gray-800 group'
+            className='inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
             <svg
               className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500'
+            
               aria-hidden='true'
               xmlns='http://www.w3.org/2000/svg'
               fill='currentColor'
@@ -60,7 +62,7 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
           <button
             data-tooltip-target='tooltip-wallet'
             type='button'
-            className='inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group'
+            className='inline-flex flex-col items-center justify-center px-5 hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
             <svg
               className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500'
@@ -174,7 +176,7 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
           <button
             data-tooltip-target='tooltip-settings'
             type='button'
-            className='inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group'
+            className='inline-flex flex-col items-center justify-center px-5 hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
             <svg
               className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500'
