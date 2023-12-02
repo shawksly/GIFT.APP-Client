@@ -38,7 +38,7 @@ function Signup({ updateUser, setNewUserStatus }) {
       let results = await response.json();
       
       if (response.status === 200) {
-        updateUser(results.token, results.user._id);
+        updateUser(results.token, results.user._id, results.user.userName, results.user.email);
         navigate("/");
 
       } else {

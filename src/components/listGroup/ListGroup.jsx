@@ -1,41 +1,38 @@
-import { useEffect, Fragment } from "react";
+import { useEffect, Fragment } from 'react';
 
-import "./ListGroup.css";
+import './ListGroup.css';
 
 function ListGroup({ token, updateUser, fetchLists, lists }) {
-
   useEffect(() => {
     fetchLists();
-  }, [token])
-  
+  }, [token]);
 
   return (
     <div>
-      <div className="container min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-800">
-        <div className="box min-w-350 min-h-400 bg-white bg-opacity-25 rounded-2xl z-10 p-8">
-          <h3 className="mb-8 text-white">GIFT.LISTS</h3>
+      <div className='container min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-800'>
+        <div className='box min-w-350 min-h-400 bg-white bg-opacity-25 rounded-2xl z-10 p-8'>
+          <h3 className='mb-8 text-white'>GIFT.LISTS</h3>
           {lists?.map((list) => {
             return (
               <Fragment key={list._id}>
-                <div className="list">
-                <div className="imgBox">
+                <div className='list'>
+                  <div className='imgBox'></div>
+                  <div className='info'>
+                    <h2>
+                      <small>#</small> 1
+                    </h2>
+                    <h4 className='capitalize'>{list.title}</h4>
+                    <p className='lowercase'>{list.description}</p>
+                  </div>
                 </div>
-                <div className="info">
-                  <h2>
-                    <small>#</small> 1
-                  </h2>
-                  <h4 className="capitalize">{list.title}</h4>
-                  <p className="lowercase">{list.description}</p>
-                </div>
-              </div>
-            </Fragment>
-            )
+              </Fragment>
+            );
           })}
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -43,11 +40,11 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
               <p>Item Description</p>
             </div>
           </div>
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -55,11 +52,11 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
               <p>Item Description</p>
             </div>
           </div>
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -67,11 +64,11 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
               <p>Item Description</p>
             </div>
           </div>
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -79,11 +76,11 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
               <p>Item Description</p>
             </div>
           </div>
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -91,11 +88,11 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
               <p>Item Description</p>
             </div>
           </div>
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -103,11 +100,11 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
               <p>Item Description</p>
             </div>
           </div>
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -115,11 +112,11 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
               <p>Item Description</p>
             </div>
           </div>
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -127,11 +124,11 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
               <p>Item Description</p>
             </div>
           </div>
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -139,11 +136,11 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
               <p>Item Description</p>
             </div>
           </div>
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -151,11 +148,11 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
               <p>Item Description</p>
             </div>
           </div>
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -163,11 +160,11 @@ function ListGroup({ token, updateUser, fetchLists, lists }) {
               <p>Item Description</p>
             </div>
           </div>
-          <div className="list">
-            <div className="imgBox">
+          <div className='list'>
+            <div className='imgBox'>
               {/* <img src="./images/1.jpg" alt=""> */}
             </div>
-            <div className="info">
+            <div className='info'>
               <h2>
                 <small>#</small> 1
               </h2>
@@ -198,7 +195,8 @@ export default ListGroup;
 // </a>
 // </div>
 
-{/* <div className="list">
+{
+  /* <div className="list">
   <div className="imgBox">
     <img src="./images/1.jpg" alt="">
   </div>
@@ -257,4 +255,5 @@ export default ListGroup;
     <h4>Item Title</h4>
     <p>Item Description</p>
   </div>
-</div> */}
+</div> */
+}

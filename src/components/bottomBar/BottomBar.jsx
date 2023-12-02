@@ -1,12 +1,25 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import AddItem from '../addItem/AddItem 2';
+import AddItem from '../addItem/AddItem';
+import AddList from '../addList/AddList';
+import AddItem from '../addItem/AddItem 2'; //#################################################
 import useComponentVisible from '../../utils/useComponentVisible';
 
-function BottomBar({ clearUser }) {
-  const { dropDownRef, buttonRef, isComponentVisible, setIsComponentVisible } =
-    useComponentVisible(false);
+function BottomBar({ token, fetchLists, clearUser, name, mail }) {
+  const {
+    dropDownRef: dropdownRefAdd,
+    buttonRef: buttonRefAdd,
+    isComponentVisible: isComponentVisibleAdd,
+    setIsComponentVisible: setIsComponentVisibleAdd,
+  } = useComponentVisible(false);
+
+  const {
+    dropDownRef: dropdownRefUser,
+    buttonRef: buttonRefUser,
+    isComponentVisible: isComponentVisibleUser,
+    setIsComponentVisible: setIsComponentVisibleUser,
+  } = useComponentVisible(false);
 
   const [addListVisible, setAddListVisible] = useState(false);
 
@@ -75,9 +88,10 @@ function BottomBar({ clearUser }) {
             <button
               data-tooltip-target='tooltip-new'
               type='button'
-              className='inline-flex items-center justify-center w-10 h-10 font-medium bg-slate-900 bg-opacity-5  rounded-full hover:bg-purple-500 group focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800'
+              className='inline-flex items-center justify-center w-10 h-10 font-medium bg-blue-600 rounded-full hover:bg-blue-700 group focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800'
+              ref={buttonRefAdd}
               onClick={() => {
-                setAddListVisible((prev) => !prev);
+                setIsComponentVisibleAdd((prev) => !prev);
               }}
             >
               <svg
@@ -131,7 +145,7 @@ function BottomBar({ clearUser }) {
           </AnimatePresence> */}
 
           <AnimatePresence>
-            {addListVisible && (
+            {isComponentVisibleAdd && (
               <motion.div
                 initial={{
                   opacity: 0,
@@ -147,8 +161,14 @@ function BottomBar({ clearUser }) {
                   ease: 'circIn',
                 }}
                 className='absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+0.75rem)]'
+                ref={dropdownRefAdd}
               >
-                <AddItem key='addDialogue' />
+                <AddList
+                  token={token}
+                  fetchLists={fetchLists}
+                  setIsComponentVisibleAdd={setIsComponentVisibleAdd}
+                />
+                {/* <AddItem token={token} /> */}
               </motion.div>
             )}
           </AnimatePresence>
@@ -185,16 +205,20 @@ function BottomBar({ clearUser }) {
           </div>
           <div
             role='button'
-            className='px-5 inline-flex flex-col items-center justify-center rounded-e-full hover:bg-purple-900 dark:hover:bg-gray-800 group'
-            ref={buttonRef}
-            onClick={() => setIsComponentVisible((prev) => !prev)}
+            className='px-5 inline-flex flex-col items-center justify-center rounded-e-full hover:bg-gray-50 dark:hover:bg-gray-800 group'
+            ref={buttonRefUser}
+            onClick={() => setIsComponentVisibleUser((prev) => !prev)}
           >
             <div className='inline-flex flex-col items-center justify-center w-8 h-8 overflow-hidden bg-gray-100 rounded-full border-2 border-gray-500 dark:bg-gray-600 group-hover:border-blue-600 dark:group-hover:border-blue-500'>
-              <span className='font-medium text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500'>
-                JL
+              <span className='font-medium text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 uppercase'>
+                {name.slice(0, 2)}
               </span>
             </div>
           </div>
+
+					{/* <button onClick={() => {
+						setIsComponentVisibleUser(false)}}>test</button> */}
+
           {/* <button
             data-tooltip-target='tooltip-profile'
             type='button'
@@ -220,18 +244,35 @@ function BottomBar({ clearUser }) {
             <div className='tooltip-arrow' data-popper-arrow></div>
           </div> */}
           {/* <!-- Dropdown menu --> */}
-          <div
-            id='userDropdown'
-            class={`${
-              !isComponentVisible && 'hidden'
-            } absolute bottom-[4.5rem] right-2 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
-            ref={dropDownRef}
-          >
-            <div class='px-4 py-3 text-sm text-gray-900 dark:text-white'>
-              <div>Bonnie Green</div>
-              <div class='font-medium truncate'>name@flowbite.com</div>
-            </div>
-            {/* <ul
+          <AnimatePresence>
+            {!isComponentVisibleUser && (
+              <motion.div
+                id='userDropdown'
+                // right-2---------------------\/
+                class='absolute bottom-[4.5rem] bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600'
+                ref={dropdownRefUser}
+                initial={{
+                  // opacity: 0,
+                  right: '-10rem',
+                }}
+                animate={{
+                  // opacity: 1,
+                  right: '2rem',
+                }}
+                exit={{
+                  // opacity: 0,
+                  right: '-10rem',
+                }}
+                transition={{
+                  duration: 0.25,
+                  ease: 'circIn',
+                }}
+              >
+                <div class='px-4 py-3 text-sm text-gray-900 dark:text-white'>
+                  <div>{name}</div>
+                  <div class='font-medium truncate'>{mail}</div>
+                </div>
+                {/* <ul
               class='py-2 text-sm text-gray-700 dark:text-gray-200'
               aria-labelledby='avatarButton'
             >
@@ -260,12 +301,14 @@ function BottomBar({ clearUser }) {
                 </a>
               </li>
             </ul> */}
-            <div class='py-1' role='button' onClick={logout}>
-              <a class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'>
-                Sign out
-              </a>
-            </div>
-          </div>
+                <div class='py-1' role='button' onClick={logout}>
+                  <a class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'>
+                    Sign out
+                  </a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </>

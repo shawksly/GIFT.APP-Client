@@ -6,7 +6,7 @@ import TopNav from "../topNav/TopNav";
 import { useNavigate } from "react-router";
 import TwoBoxes from "../twoBoxes/TwoBoxes";
 
-function Home({ isLoggedIn, token, clearUser, userId }) {
+function Home({ isLoggedIn, token, clearUser, userId, name, mail }) {
   const [lists, setLists] = useState([]);
   const [showTopNav, setShowTopNav] = useState(true);
   const loginCounter = useRef(0);
@@ -51,7 +51,7 @@ function Home({ isLoggedIn, token, clearUser, userId }) {
       <TopNav clearUser={clearUser} showTopNav={showTopNav} />
       <TwoBoxes/>
       <ListGroup token={token} fetchLists={fetchLists} lists={lists} />
-      <BottomBar clearUser={clearUser} />
+      <BottomBar token={token} fetchLists={fetchLists} clearUser={clearUser} name={name} mail={mail} />
     </>
   );
 }
