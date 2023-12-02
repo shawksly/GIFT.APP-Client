@@ -16,6 +16,8 @@ import AddList from './components/addList/AddList.jsx'
 function App() {
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState("");
+  const [name, setName] = useState("");
+  const [mail, setMail] = useState("");
 
   // Initialize the isLoggedIn state as false (user is not logged in)
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,7 +28,10 @@ function App() {
   function initializeUser() {
     setToken(localStorage.token);
     setUserId(localStorage.userId);
+    setName(localStorage.name);
+    setMail(localStorage.mail);
     console.log("TOKEN:", localStorage.token);
+    console.log('!!!!!!!!!!!!!!!!!!!', userId, name, mail)
 
     // Set the isLoggedIn state based on the presence of the token
     // setIsLoggedIn(!!localStorage.token);
@@ -36,11 +41,16 @@ function App() {
     console.log('IS LOGGED IN: ', isLoggedIn);
   }
 
-  function updateUser(newToken, newId) {
+  function updateUser(newToken, newId, newName, newMail) {
     setToken(newToken);
     localStorage.token = newToken;
     setUserId(newId);
     localStorage.userId = newId;
+    setName(newName);
+    localStorage.name = newName;
+    setName(newMail);
+    localStorage.mail = newMail;
+    console.log('####################', newId, newName, newMail)
 
     // Set the isLoggedIn state to true when a token is updated (user is logged in)
     // setIsLoggedIn(true);
@@ -52,6 +62,10 @@ function App() {
     localStorage.removeItem("token"); // Remove the token from local storage
     setUserId("");
     localStorage.removeItem("userId");
+    setName("");
+    localStorage.removeItem("name");
+    setMail("");
+    localStorage.removeItem("mail");
 
     // Set the isLoggedIn state to false when the user logs out
     // setIsLoggedIn(false);
@@ -64,7 +78,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Home isLoggedIn={isLoggedIn} token={token} clearUser={clearUser} userId={userId} />
+            <Home isLoggedIn={isLoggedIn} token={token} clearUser={clearUser} userId={userId} name={name} mail={mail} />
           }
         />
         <Route path="/auth" element={<Auth updateUser={updateUser} />} />

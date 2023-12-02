@@ -5,7 +5,7 @@ import AddItem from "../addItem/AddItem";
 import TopNav from "../topNav/TopNav";
 import { useNavigate } from "react-router";
 
-function Home({ isLoggedIn, token, clearUser, userId }) {
+function Home({ isLoggedIn, token, clearUser, userId, name, mail }) {
   const [lists, setLists] = useState([]);
   const [showTopNav, setShowTopNav] = useState(true);
   const loginCounter = useRef(0);
@@ -49,7 +49,7 @@ function Home({ isLoggedIn, token, clearUser, userId }) {
     <>
       <TopNav clearUser={clearUser} showTopNav={showTopNav} />
       <ListGroup token={token} fetchLists={fetchLists} lists={lists} />
-      <BottomBar clearUser={clearUser} />
+      <BottomBar token={token} fetchLists={fetchLists} clearUser={clearUser} name={name} mail={mail} />
     </>
   );
 }
