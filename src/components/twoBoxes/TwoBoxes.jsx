@@ -5,7 +5,7 @@ function TwoBoxes() {
   return (
     <div className="flex  bg-white bg-opacity-10 containerII min-h-34  ">
        
-      <div className="w-1/4 p-4 ml-4 mr-4 border-4 rounded-md">
+      <div className="w-full sm:w-1/2 md:w-1/4 p-2 ml-4 mr-4 border-4 rounded-md">
       
         <div className="text-purple-200 text-opacity-2 bg-white bg-opacity-10 h-32">
           <h3 className='mb-8 pl-4'  > Number of Gift lists </h3>
@@ -15,7 +15,7 @@ function TwoBoxes() {
         </div>
 
       </div>
-      <div className="w-1/4 p-4 mr-4 ml-4  border-4 rounded-md" >
+      <div className="w-full sm:w-1/2 md:w-1/4 p-2 mr-4 ml-4  border-4 rounded-md" >
         <div className="text-purple-200 text-opacity-2 bg-white bg-opacity-10 h-32 ">
          <h3 className='mb-8 pl-4'>Percentage of items Gifted </h3> 
           <div className="number">
