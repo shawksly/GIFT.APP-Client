@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import AddItem from '../addItem/AddItem';
+import AddItem from '../addItem/AddItem 2';
 import useComponentVisible from '../../utils/useComponentVisible';
 
 function BottomBar({ clearUser }) {
@@ -19,15 +19,16 @@ function BottomBar({ clearUser }) {
 
   return (
     <>
-      <div className='fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-white border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600'>
+      <div className='fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600'>
         <div className='grid h-full max-w-lg grid-cols-5 mx-auto'>
           <button
             data-tooltip-target='tooltip-home'
             type='button'
-            className='inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-gray-50 dark:hover:bg-gray-800 group'
+            className='inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
             <svg
               className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500'
+            
               aria-hidden='true'
               xmlns='http://www.w3.org/2000/svg'
               fill='currentColor'
@@ -48,7 +49,7 @@ function BottomBar({ clearUser }) {
           <button
             data-tooltip-target='tooltip-wallet'
             type='button'
-            className='inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group'
+            className='inline-flex flex-col items-center justify-center px-5 hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
             <svg
               className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500'
@@ -74,7 +75,7 @@ function BottomBar({ clearUser }) {
             <button
               data-tooltip-target='tooltip-new'
               type='button'
-              className='inline-flex items-center justify-center w-10 h-10 font-medium bg-blue-600 rounded-full hover:bg-blue-700 group focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800'
+              className='inline-flex items-center justify-center w-10 h-10 font-medium bg-slate-900 bg-opacity-5  rounded-full hover:bg-purple-500 group focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800'
               onClick={() => {
                 setAddListVisible((prev) => !prev);
               }}
@@ -155,7 +156,7 @@ function BottomBar({ clearUser }) {
           <button
             data-tooltip-target='tooltip-settings'
             type='button'
-            className='inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group'
+            className='inline-flex flex-col items-center justify-center px-5 hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
             <svg
               className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500'
@@ -184,7 +185,7 @@ function BottomBar({ clearUser }) {
           </div>
           <div
             role='button'
-            className='px-5 inline-flex flex-col items-center justify-center rounded-e-full hover:bg-gray-50 dark:hover:bg-gray-800 group'
+            className='px-5 inline-flex flex-col items-center justify-center rounded-e-full hover:bg-purple-900 dark:hover:bg-gray-800 group'
             ref={buttonRef}
             onClick={() => setIsComponentVisible((prev) => !prev)}
           >
