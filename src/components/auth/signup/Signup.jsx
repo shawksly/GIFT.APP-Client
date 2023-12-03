@@ -22,15 +22,15 @@ function Signup({ updateUser, setNewUserStatus }) {
 
       imgForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        console.log("##########", e);
+        console.log("EVENT ", e);
         const file = e.target[3].files[0];
-        console.log(file);
+        console.log('FILE ', file);
 
         //! fetch to server endpoint to get the link (from s3)
         const url = await fetch('http://localhost:4000/geturl')
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            console.log('JSON DATA ', data);
             return data;
           })
         //! fetch to s3 to upload the image (PUT)
@@ -43,17 +43,17 @@ function Signup({ updateUser, setNewUserStatus }) {
         });
 
         const imgURL = url.split('?')[0];
-        console.log({imgURL});
+        console.log('imgURL ', imgURL);
 
-        const img = document.createElement('img');
-        img.src = imgURL;
-        document.body.appendChild(img); //change to append correctly
+        // const img = document.createElement('img');
+        // img.src = imgURL;
+        // document.body.appendChild(img); //change to append correctly
         //! fetch to our server's db to post the link
         let response = await fetch('http://localhost:4000/user/signup', {
-          method: 'POST',
-          headers: {
+          headers: new Headers({
             'Content-Type': 'application/json',
-          },
+          }),
+          method: 'POST',
           body: JSON.stringify({
             userName: userName,
             img: imgURL,
@@ -62,9 +62,9 @@ function Signup({ updateUser, setNewUserStatus }) {
           }),
         });
 
-        console.log("!!!!!!!!!????????????", response);
+        console.log("RESPONSE ", response);
       let results = await response.json();
-      console.log("!!!!!!!!!", results)
+      console.log("RESULTS ", results)
 
       if (response.status === 200) {
         updateUser(
@@ -73,6 +73,7 @@ function Signup({ updateUser, setNewUserStatus }) {
           results.user.userName,
           results.user.email
         );
+        console.log('UPDATEUSER', updateUser);
         navigate('/');
       } else {
         console.log('Signup Missed');

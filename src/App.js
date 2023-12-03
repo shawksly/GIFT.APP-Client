@@ -104,6 +104,12 @@ function App() {
         <Route path="/itemlist" element={<ItemList updateUser={updateUser} />} />
         <Route path="/imageTest" element={<ImageTestII updateUser={updateUser} />} />
 <Route path='/list2' element={<List />} />
+<Route path='/home' element={<Home isLoggedIn={isLoggedIn}
+              token={token}
+              clearUser={clearUser}
+              userId={userId}
+              name={name}
+              mail={mail} />} />
 
       </Routes>
     </BrowserRouter>
