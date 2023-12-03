@@ -5,6 +5,10 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Auth from './components/auth/Auth'
 */
+
+
+
+
 import Auth from './components/auth/Auth';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/home/Home';
@@ -14,6 +18,8 @@ import AddItem from './components/addItem/AddItem';
 import AddList from './components/addList/AddList.jsx';
 import ItemList from './components/itemList/ItemList';
 import List from './components/list/List.jsx';
+import ImageTestII from './components/imageTestII/ImageTestII'
+
 
 function App() {
   const [token, setToken] = useState('');
@@ -90,15 +96,15 @@ function App() {
             />
           }
         />
-        <Route path='/auth' element={<Auth updateUser={updateUser} />} />
-        <Route path='/list' element={<ListGroup updateUser={updateUser} />} />
-        <Route path='/add' element={<AddItem updateUser={updateUser} />} />
-        <Route path='/addlist' element={<AddList updateUser={updateUser} />} />
-        <Route
-          path='/itemlist'
-          element={<ItemList updateUser={updateUser} />}
-        />
-        <Route path='/list2' element={<List />} />
+
+        <Route path="/auth" element={<Auth updateUser={updateUser} />} />
+        <Route path="/list" element={<ListGroup updateUser={updateUser} />} />
+        <Route path="/add" element={<AddItem updateUser={updateUser} />} />
+        <Route path="/addlist" element={<AddList updateUser={updateUser} />} />
+        <Route path="/itemlist" element={<ItemList updateUser={updateUser} />} />
+        <Route path="/imageTest" element={<ImageTestII updateUser={updateUser} />} />
+<Route path='/list2' element={<List />} />
+
       </Routes>
     </BrowserRouter>
   );

@@ -8,7 +8,13 @@ import TwoBoxes from "../twoBoxes/TwoBoxes";
 import Avatars from "../avatars/Avatars"
 import AllSearch from '../search/AllSearch'
 
+
+
+
+
+
 function Home({ isLoggedIn, token, clearUser, userId, name, mail }) {
+
   const [lists, setLists] = useState([]);
   const [showTopNav, setShowTopNav] = useState(true);
   const loginCounter = useRef(0);
