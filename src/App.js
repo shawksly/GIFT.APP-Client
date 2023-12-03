@@ -13,6 +13,7 @@ import { useState, useEffect, useRef } from "react";
 import AddItem from "./components/addItem/AddItem";
 import AddList from './components/addList/AddList.jsx'
 import ItemList from "./components/itemList/ItemList";
+import ImageTestII from './components/imageTestII/ImageTestII'
 
 function App() {
   const [token, setToken] = useState("");
@@ -73,6 +74,7 @@ function App() {
         <Route path="/add" element={<AddItem updateUser={updateUser} />} />
         <Route path="/addlist" element={<AddList updateUser={updateUser} />} />
         <Route path="/itemlist" element={<ItemList updateUser={updateUser} />} />
+        <Route path="/imageTest" element={<ImageTestII updateUser={updateUser} />} />
       </Routes>
     </BrowserRouter>
   );
