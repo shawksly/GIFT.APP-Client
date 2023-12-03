@@ -32,7 +32,7 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
 
   return (
     <>
-      <div className='fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600 justify-center items-center '>
+      <div className='fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 border-2 border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600 justify-center items-center '>
         <div className='grid h-full max-w-lg grid-cols-5 mx-auto'>
           <button
             data-tooltip-target='tooltip-home'
@@ -62,12 +62,16 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
             type='button'
             className='inline-flex flex-col items-center justify-center px-5 hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
-
-            <svg className="w-6 h-6 text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-    <path d="M16 0H4a2 2 0 0 0-2 2v1H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6ZM13.929 17H7.071a.5.5 0 0 1-.5-.5 3.935 3.935 0 1 1 7.858 0 .5.5 0 0 1-.5.5Z"/>
-  </svg>
-
- 
+            {/* // TODO fix height and width?? */}
+            <svg
+              className='w-6 h-6 text-zinc-100 dark:text-white'
+              aria-hidden='true'
+              xmlns='http://www.w3.org/2000/svg'
+              fill='currentColor'
+              viewBox='0 0 18 20'
+            >
+              <path d='M16 0H4a2 2 0 0 0-2 2v1H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6ZM13.929 17H7.071a.5.5 0 0 1-.5-.5 3.935 3.935 0 1 1 7.858 0 .5.5 0 0 1-.5.5Z' />
+            </svg>
 
             <span className='sr-only'>Wallet</span>
           </button>
@@ -79,11 +83,11 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
             Wallet
             <div className='tooltip-arrow' data-popper-arrow></div>
           </div>
-          <div className='flex items-center justify-center'>
+          <div className='flex items-center justify-center hover:bg-purple-900 group'>
             <button
               data-tooltip-target='tooltip-new'
               type='button'
-              className='inline-flex items-center justify-center w-10 h-10 font-medium bg-blue-600 rounded-full hover:bg-blue-700 group focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800'
+              className='inline-flex items-center justify-center w-10 h-10 font-medium bg-blue-600 rounded-full hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800'
               ref={buttonRefAdd}
               onClick={() => {
                 setIsComponentVisibleAdd((prev) => !prev);
@@ -173,27 +177,15 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
             type='button'
             className='inline-flex flex-col items-center justify-center px-5 hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
-
-            <svg class="w-6 h-6 text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-    <path d="M15.133 10.632v-1.8a5.407 5.407 0 0 0-4.154-5.262.955.955 0 0 0 .021-.106V1.1a1 1 0 0 0-2 0v2.364a.944.944 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C4.867 13.018 3 13.614 3 14.807 3 15.4 3 16 3.538 16h12.924C17 16 17 15.4 17 14.807c0-1.193-1.867-1.789-1.867-4.175Zm-13.267-.8a1 1 0 0 1-1-1 9.424 9.424 0 0 1 2.517-6.39A1.001 1.001 0 1 1 4.854 3.8a7.431 7.431 0 0 0-1.988 5.037 1 1 0 0 1-1 .995Zm16.268 0a1 1 0 0 1-1-1A7.431 7.431 0 0 0 15.146 3.8a1 1 0 0 1 1.471-1.354 9.425 9.425 0 0 1 2.517 6.391 1 1 0 0 1-1 .995ZM6.823 17a3.453 3.453 0 0 0 6.354 0H6.823Z"/>
-  </svg>
-
             <svg
-              className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500'
+              class='w-6 h-6 text-zinc-100 dark:text-white'
               aria-hidden='true'
               xmlns='http://www.w3.org/2000/svg'
-              fill='none'
+              fill='currentColor'
               viewBox='0 0 20 20'
             >
-              <path
-                className='stroke-zinc-100'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='2'
-                d='M4 12.25V1m0 11.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M4 19v-2.25m6-13.5V1m0 2.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M10 19V7.75m6 4.5V1m0 11.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM16 19v-2'
-              />
+              <path d='M15.133 10.632v-1.8a5.407 5.407 0 0 0-4.154-5.262.955.955 0 0 0 .021-.106V1.1a1 1 0 0 0-2 0v2.364a.944.944 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C4.867 13.018 3 13.614 3 14.807 3 15.4 3 16 3.538 16h12.924C17 16 17 15.4 17 14.807c0-1.193-1.867-1.789-1.867-4.175Zm-13.267-.8a1 1 0 0 1-1-1 9.424 9.424 0 0 1 2.517-6.39A1.001 1.001 0 1 1 4.854 3.8a7.431 7.431 0 0 0-1.988 5.037 1 1 0 0 1-1 .995Zm16.268 0a1 1 0 0 1-1-1A7.431 7.431 0 0 0 15.146 3.8a1 1 0 0 1 1.471-1.354 9.425 9.425 0 0 1 2.517 6.391 1 1 0 0 1-1 .995ZM6.823 17a3.453 3.453 0 0 0 6.354 0H6.823Z' />
             </svg>
-
             <span className='sr-only'>Settings</span>
           </button>
           <div
@@ -217,7 +209,7 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
             </div>
           </div>
 
-					{/* <button onClick={() => {
+          {/* <button onClick={() => {
 						setIsComponentVisibleUser(false)}}>test</button> */}
 
           {/* <button
@@ -250,7 +242,7 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
               <motion.div
                 id='userDropdown'
                 // right-2---------------------\/
-                class='absolute bottom-[4.5rem] bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600'
+                class='absolute bottom-[4.5rem] bg-zinc-100 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600'
                 ref={dropdownRefUser}
                 initial={{
                   // opacity: 0,
@@ -258,7 +250,7 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
                 }}
                 animate={{
                   // opacity: 1,
-                  right: '2rem',
+                  right: '1rem',
                 }}
                 exit={{
                   // opacity: 0,
@@ -317,5 +309,3 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
 }
 
 export default BottomBar;
-
-
