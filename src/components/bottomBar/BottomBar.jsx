@@ -6,7 +6,7 @@ import AddList from '../addList/AddList';
 // import AddItem from '../addItem/AddItem 2'; //#################################################
 import useComponentVisible from '../../utils/useComponentVisible';
 
-function BottomBar({ token, fetchLists, clearUser, name, mail }) {
+function BottomBar({ token, fetchLists, clearUser, name, mail, photo }) {
   const {
     dropDownRef: dropdownRefAdd,
     buttonRef: buttonRefAdd,
@@ -20,8 +20,6 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
     isComponentVisible: isComponentVisibleUser,
     setIsComponentVisible: setIsComponentVisibleUser,
   } = useComponentVisible(false);
-
-  const [addListVisible, setAddListVisible] = useState(false);
 
   const navigate = useNavigate();
 
@@ -83,15 +81,17 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
             Wallet
             <div className='tooltip-arrow' data-popper-arrow></div>
           </div>
-          <div className='flex items-center justify-center hover:bg-purple-900 group'>
+          <div
+            ref={buttonRefAdd}
+            onClick={() => {
+              setIsComponentVisibleAdd((prev) => !prev);
+            }}
+            className='flex items-center justify-center hover:bg-purple-900 group'
+          >
             <button
               data-tooltip-target='tooltip-new'
               type='button'
               className='inline-flex items-center justify-center w-10 h-10 font-medium bg-blue-600 rounded-full hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800'
-              ref={buttonRefAdd}
-              onClick={() => {
-                setIsComponentVisibleAdd((prev) => !prev);
-              }}
             >
               <svg
                 className='w-4 h-4 text-white'
@@ -203,9 +203,10 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
             onClick={() => setIsComponentVisibleUser((prev) => !prev)}
           >
             <div className='inline-flex flex-col items-center justify-center w-8 h-8 overflow-hidden bg-transparent rounded-full border-2 border-zinc-100 dark:bg-gray-600 group-hover:border-blue-600 dark:group-hover:border-blue-500'>
-              <span className='font-medium text-zinc-100 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 uppercase'>
+              <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-8 h-8 rounded-full cursor-pointer" src={photo} alt="User dropdown" />
+              {/* <span className='font-medium text-zinc-100 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 uppercase'>
                 {name.slice(0, 2)}
-              </span>
+              </span> */}
             </div>
           </div>
 
@@ -238,27 +239,27 @@ function BottomBar({ token, fetchLists, clearUser, name, mail }) {
           </div> */}
           {/* <!-- Dropdown menu --> */}
           <AnimatePresence>
-            {!isComponentVisibleUser && (
+            {isComponentVisibleUser && (
               <motion.div
                 id='userDropdown'
                 // right-2---------------------\/
                 class='absolute bottom-[4.5rem] bg-zinc-100 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600'
                 ref={dropdownRefUser}
                 initial={{
-                  // opacity: 0,
-                  right: '-10rem',
+                  opacity: 0,
+                  right: '-20rem',
                 }}
                 animate={{
-                  // opacity: 1,
+                  opacity: 1,
                   right: '1rem',
                 }}
                 exit={{
-                  // opacity: 0,
-                  right: '-10rem',
+                  opacity: 0,
+                  right: '-20rem',
                 }}
                 transition={{
                   duration: 0.25,
-                  ease: 'circIn',
+                  ease: 'easeIn',
                 }}
               >
                 <div class='px-4 py-3 text-sm text-gray-900 dark:text-white'>
