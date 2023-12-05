@@ -36,7 +36,7 @@ function Login({ updateUser, setNewUserStatus }) {
 
       console.log(results);
       if (response.status === 200) {
-        updateUser(results.token, results.user._id, results.user.userName, results.user.email);
+        updateUser(results.token, results.user._id, results.user.userName, results.user.email, results.user.img);
         navigate('/');
       } else {
         console.log('Login Missed');

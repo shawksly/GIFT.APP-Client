@@ -26,6 +26,7 @@ function App() {
   const [userId, setUserId] = useState('');
   const [name, setName] = useState('');
   const [mail, setMail] = useState('');
+  const [photo, setPhoto] = useState('');
 
   // Initialize the isLoggedIn state as false (user is not logged in)
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,8 +39,9 @@ function App() {
     setUserId(localStorage.userId);
     setName(localStorage.name);
     setMail(localStorage.mail);
+    setPhoto(localStorage.photo);
     console.log('TOKEN:', localStorage.token);
-    console.log('!!!!!!!!!!!!!!!!!!!', userId, name, mail);
+    console.log('Initialized: ', userId, name, mail, photo);
 
     // Set the isLoggedIn state based on the presence of the token
     // setIsLoggedIn(!!localStorage.token);
@@ -49,7 +51,7 @@ function App() {
     console.log('IS LOGGED IN: ', isLoggedIn);
   }
 
-  function updateUser(newToken, newId, newName, newMail) {
+  function updateUser(newToken, newId, newName, newMail, newPhoto) {
     setToken(newToken);
     localStorage.token = newToken;
     setUserId(newId);
@@ -58,7 +60,9 @@ function App() {
     localStorage.name = newName;
     setName(newMail);
     localStorage.mail = newMail;
-    console.log('####################', newId, newName, newMail);
+    setPhoto(newPhoto);
+    localStorage.photo = newPhoto;
+    console.log('User Updated: ', newId, newName, newMail, newPhoto);
 
     // Set the isLoggedIn state to true when a token is updated (user is logged in)
     // setIsLoggedIn(true);
@@ -74,10 +78,14 @@ function App() {
     localStorage.removeItem('name');
     setMail('');
     localStorage.removeItem('mail');
+    setPhoto('');
+    localStorage.removeItem('photo');
 
     // Set the isLoggedIn state to false when the user logs out
     // setIsLoggedIn(false);
-    isLoggedIn.current = true;
+    isLoggedIn.current = false;
+
+    console.log("User Cleared")
   }
 
   return (
@@ -93,6 +101,7 @@ function App() {
               userId={userId}
               name={name}
               mail={mail}
+              photo={photo}
             />
           }
         />
@@ -109,7 +118,8 @@ function App() {
               clearUser={clearUser}
               userId={userId}
               name={name}
-              mail={mail} />} />
+              mail={mail}
+              photo={photo} />} />
 
       </Routes>
     </BrowserRouter>

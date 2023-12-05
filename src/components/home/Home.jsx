@@ -13,7 +13,7 @@ import AllSearch from '../search/AllSearch'
 
 
 
-function Home({ isLoggedIn, token, clearUser, userId, name, mail }) {
+function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
 
   const [lists, setLists] = useState([]);
   const [showTopNav, setShowTopNav] = useState(true);
@@ -61,7 +61,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail }) {
       <AllSearch/>
       <TwoBoxes/>
       <ListGroup token={token} fetchLists={fetchLists} lists={lists} />
-      <BottomBar token={token} fetchLists={fetchLists} clearUser={clearUser} name={name} mail={mail} />
+      <BottomBar token={token} fetchLists={fetchLists} clearUser={clearUser} name={name} mail={mail} photo={photo} />
     </>
   );
 }
