@@ -1,15 +1,35 @@
 import { useEffect, Fragment } from 'react';
 import './ItemList.css';
-import ItemAvatar from '../itemAvatar/ItemAvatar';
+
+
+import ListEmojiBar from '../listEmojiBar/ListEmojiBar'
+import Avatars from "../avatars/Avatars"
+import SaveList from '../listEmojiBar/SaveList'
+
+
+
+
 
 function ItemList() {
   return (
 
-    
+
+    <div>
+      <ListEmojiBar/>
+      <Avatars/>
+      <SaveList/>
+      
 
     <div className='m-0 px-0 pb-0 pt-2 box-border font-poppins min-h-screen min-w-[100vw] flex items-center justify-center relative overflow-hidden bg-[#222]'>
 
+
+
+    
+
+
+
 <img className=" top-10 w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src="/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar"/>
+
 
       <div className='m-0 box-border font-poppins min-w-[350px] min-h-[200px] bg-[#ffffff1a] bg-opacity-25 rounded-[10px] z-10 p-5'>
         <h3 className='mx-0 mt-0 mb-[25px] px-0 pb-0 pt-2 box-border font-poppins text-white'>ITEM.LISTS</h3>
@@ -45,6 +65,7 @@ function ItemList() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
