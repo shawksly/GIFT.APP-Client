@@ -58,7 +58,7 @@ function App() {
     localStorage.userId = newId;
     setName(newName);
     localStorage.name = newName;
-    setName(newMail);
+    setMail(newMail);
     localStorage.mail = newMail;
     setPhoto(newPhoto);
     localStorage.photo = newPhoto;

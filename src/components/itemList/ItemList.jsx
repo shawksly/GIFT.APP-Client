@@ -10,7 +10,12 @@ import SaveList from '../listEmojiBar/SaveList'
 
 
 
-function ItemList() {
+function ItemList({ token, fetchGifts }) {
+
+  useEffect(() => {
+    fetchGifts();
+  }, [token]);
+
   return (
 
 
