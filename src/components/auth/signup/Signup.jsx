@@ -16,70 +16,127 @@ function Signup({ updateUser, setNewUserStatus }) {
 
   async function SignupInput(e) {
     e.preventDefault();
+    console.log('testing this function');
+    console.log(email);
+    console.log(password);
+    console.log(userName);
+    console.log(image);
 
     try {
-      let imgForm = document.querySelector('.imgForm');
-
-      imgForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        console.log("EVENT ", e);
-        const file = e.target[3].files[0];
-        console.log('FILE ', file);
-
-        //! fetch to server endpoint to get the link (from s3)
-        const url = await fetch('http://localhost:4000/geturl')
-          .then((res) => res.json())
-          .then((data) => {
-            console.log('JSON DATA ', data);
-            return data;
-          })
-        //! fetch to s3 to upload the image (PUT)
-        await fetch(url, {
-          method: 'PUT',
-          headers: new Headers({
-            'Content-Type': 'multipart/form-data',
-          }),
-          body: file,
+      //! fetch to server endpoint to get the link (from s3)
+      const url = await fetch('http://localhost:4000/geturl')
+        .then((res) => res.json())
+        .then((data) => {
+          console.log('JSON DATA ', data);
+          return data;
         });
 
-        const imgURL = url.split('?')[0];
-        console.log('imgURL ', imgURL);
-
-        // const img = document.createElement('img');
-        // img.src = imgURL;
-        // document.body.appendChild(img); //change to append correctly
-        //! fetch to our server's db to post the link
-        let response = await fetch('http://localhost:4000/user/signup', {
-          headers: new Headers({
-            'Content-Type': 'application/json',
-          }),
-          method: 'POST',
-          body: JSON.stringify({
-            userName: userName,
-            img: imgURL,
-            email: email,
-            password: password,
-          }),
-        });
-
-        console.log("RESPONSE ", response);
-      let results = await response.json();
-      console.log("RESULTS ", results)
-
-      if (response.status === 200) {
-        updateUser(
-          results.token,
-          results.user._id,
-          results.user.userName,
-          results.user.email
-        );
-        console.log('UPDATEUSER', updateUser);
-        navigate('/');
-      } else {
-        console.log('Signup Missed');
-      }
-
+      //! fetch to s3 to upload the image (PUT)
+      await fetch(url, {
+        method: 'PUT',
+        headers: new Headers({
+          'Content-Type': 'multipart/form-data',
+        }),
+        body: image,
       });
+
+      const imgURL = url.split('?')[0];
+      console.log('imgURL ', imgURL);
+
+      //! fetch to our server's db to post the link
+      let response = await fetch('http://localhost:4000/user/signup', {
+        headers: new Headers({
+          'Content-Type': 'application/json',
+        }),
+        method: 'POST',
+        body: JSON.stringify({
+          userName: userName,
+          img: imgURL,
+          email: email,
+          password: password,
+        }),
+      });
+
+      console.log('RESPONSE ', response);
+      let results = await response.json();
+      console.log('RESULTS ', results);
+
+        if (response.status === 200) {
+          updateUser(
+            results.token,
+            results.user._id,
+            results.user.userName,
+            results.user.email,
+            results.user.img
+          );
+          console.log('UPDATEUSER', updateUser);
+          navigate('/');
+        } else {
+          console.log('Signup Missed');
+        }
+
+      // let imgForm = document.querySelector('.imgForm');
+
+      // imgForm.addEventListener('submit', async (e) => {
+      //   e.preventDefault();
+      //   console.log('IMAGE FILE FROM FORM', image);
+      //   console.log('EVENT ', e);
+      //   const file = e.target[3].files[0];
+      //   console.log('FILE ', file);
+
+      //   //! fetch to server endpoint to get the link (from s3)
+      //   const url = await fetch('http://localhost:4000/geturl')
+      //     .then((res) => res.json())
+      //     .then((data) => {
+      //       console.log('JSON DATA ', data);
+      //       return data;
+      //     });
+      //   //! fetch to s3 to upload the image (PUT)
+      //   await fetch(url, {
+      //     method: 'PUT',
+      //     headers: new Headers({
+      //       'Content-Type': 'multipart/form-data',
+      //     }),
+      //     body: file,
+      //   });
+
+      //   const imgURL = url.split('?')[0];
+      //   console.log('imgURL ', imgURL);
+
+      //   // const img = document.createElement('img');
+      //   // img.src = imgURL;
+      //   // document.body.appendChild(img); //change to append correctly
+      //   //! fetch to our server's db to post the link
+      //   let response = await fetch('http://localhost:4000/user/signup', {
+      //     headers: new Headers({
+      //       'Content-Type': 'application/json',
+      //     }),
+      //     method: 'POST',
+      //     body: JSON.stringify({
+      //       userName: userName,
+      //       img: imgURL,
+      //       email: email,
+      //       password: password,
+      //     }),
+      //   });
+
+      //   console.log('RESPONSE ', response);
+      //   let results = await response.json();
+      //   console.log('RESULTS ', results);
+
+      //   if (response.status === 200) {
+      //     updateUser(
+      //       results.token,
+      //       results.user._id,
+      //       results.user.userName,
+      //       results.user.email
+      //     );
+      //     console.log('UPDATEUSER', updateUser);
+      //     navigate('/');
+      //   } else {
+      //     console.log('Signup Missed');
+      //   }
+      // });
     } catch (error) {
       console.log(error);
     }
@@ -158,7 +215,9 @@ function Signup({ updateUser, setNewUserStatus }) {
             Upload file
           </label>
           <input
-            onChange={(e) => setImage(e.target.value)}
+            onChange={(e) => {
+              setImage(e.target.files[0]);
+            }}
             class='block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400'
             id='file_input'
             type='file'
@@ -185,10 +244,6 @@ function Signup({ updateUser, setNewUserStatus }) {
     </>
   );
 }
-
-Signup.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};
 
 export default Signup;
 
