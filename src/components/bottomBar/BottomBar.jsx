@@ -6,7 +6,15 @@ import AddList from '../addList/AddList';
 // import AddItem from '../addItem/AddItem 2'; //#################################################
 import useComponentVisible from '../../utils/useComponentVisible';
 
-function BottomBar({ token, fetchLists, clearUser, name, mail, photo }) {
+function BottomBar({
+  token,
+  fetchLists,
+  setListDisplay,
+  clearUser,
+  name,
+  mail,
+  photo,
+}) {
   const {
     dropDownRef: dropdownRefAdd,
     buttonRef: buttonRefAdd,
@@ -32,21 +40,27 @@ function BottomBar({ token, fetchLists, clearUser, name, mail, photo }) {
     <>
       <div className='fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 border-2 border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600 justify-center items-center '>
         <div className='grid h-full max-w-lg grid-cols-5 mx-auto'>
-          <button
-            data-tooltip-target='tooltip-home'
-            type='button'
+          <div
+            onClick={() => {
+              setListDisplay(true);
+            }}
             className='inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
-            <svg
-              className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 fill-zinc-100'
-              aria-hidden='true'
-              xmlns='http://www.w3.org/2000/svg'
-              viewBox='0 0 20 20'
+            <button
+              data-tooltip-target='tooltip-home'
+              type='button'
             >
-              <path d='m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z' />
-            </svg>
-            <span className='sr-only'>Home</span>
-          </button>
+              <svg
+                className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 fill-zinc-100'
+                aria-hidden='true'
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 20 20'
+              >
+                <path d='m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z' />
+              </svg>
+              <span className='sr-only'>Home</span>
+            </button>
+          </div>
           <div
             id='tooltip-home'
             role='tooltip'
@@ -275,7 +289,9 @@ function BottomBar({ token, fetchLists, clearUser, name, mail, photo }) {
               >
                 <div class='px-4 py-3 text-sm text-gray-900 dark:text-white'>
                   <div>{localStorage.name ?? name}</div>
-                  <div class='font-medium truncate'>{localStorage.mail ?? mail}</div>
+                  <div class='font-medium truncate'>
+                    {localStorage.mail ?? mail}
+                  </div>
                 </div>
                 {/* <ul
               class='py-2 text-sm text-gray-700 dark:text-gray-200'
