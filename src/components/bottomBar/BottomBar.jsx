@@ -216,7 +216,7 @@ function BottomBar({
             ref={buttonRefUser}
             onClick={() => setIsComponentVisibleUser((prev) => !prev)}
           >
-            <div className='inline-flex flex-col items-center justify-center w-8 h-8 overflow-hidden bg-transparent rounded-full border-2 border-zinc-100 dark:bg-gray-600 group-hover:border-blue-600 dark:group-hover:border-blue-500'>
+            {/* <div className='inline-flex flex-col items-center justify-center w-8 h-8 overflow-hidden bg-transparent rounded-full border-2 border-zinc-100 dark:bg-gray-600 group-hover:border-blue-600 dark:group-hover:border-blue-500'>
               {photo ? (
                 <img
                   id='avatarButton'
@@ -232,7 +232,7 @@ function BottomBar({
                   {localStorage.name.slice(0, 2) ?? name.slice(0, 2)}
                 </span>
               )}
-            </div>
+            </div> */}
           </div>
 
           {/* <button onClick={() => {
