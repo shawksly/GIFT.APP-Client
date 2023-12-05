@@ -2,7 +2,12 @@ import { useEffect, Fragment } from 'react';
 import './ItemList.css';
 import ItemAvatar from '../itemAvatar/ItemAvatar';
 
-function ItemList() {
+function ItemList({ token, fetchGifts }) {
+
+  useEffect(() => {
+    fetchGifts();
+  }, [token]);
+
   return (
 
     

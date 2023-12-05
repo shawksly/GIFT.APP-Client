@@ -203,10 +203,21 @@ function BottomBar({ token, fetchLists, clearUser, name, mail, photo }) {
             onClick={() => setIsComponentVisibleUser((prev) => !prev)}
           >
             <div className='inline-flex flex-col items-center justify-center w-8 h-8 overflow-hidden bg-transparent rounded-full border-2 border-zinc-100 dark:bg-gray-600 group-hover:border-blue-600 dark:group-hover:border-blue-500'>
-              <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-8 h-8 rounded-full cursor-pointer" src={photo} alt="User dropdown" />
-              {/* <span className='font-medium text-zinc-100 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 uppercase'>
-                {name.slice(0, 2)}
-              </span> */}
+              {photo ? (
+                <img
+                  id='avatarButton'
+                  type='button'
+                  data-dropdown-toggle='userDropdown'
+                  data-dropdown-placement='bottom-start'
+                  class='w-8 h-8 rounded-full cursor-pointer'
+                  src={photo}
+                  alt='User dropdown'
+                />
+              ) : (
+                <span className='font-medium text-zinc-100 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 uppercase'>
+                  {localStorage.name.slice(0, 2) ?? name.slice(0, 2)}
+                </span>
+              )}
             </div>
           </div>
 
@@ -263,8 +274,8 @@ function BottomBar({ token, fetchLists, clearUser, name, mail, photo }) {
                 }}
               >
                 <div class='px-4 py-3 text-sm text-gray-900 dark:text-white'>
-                  <div>{name}</div>
-                  <div class='font-medium truncate'>{mail}</div>
+                  <div>{localStorage.name ?? name}</div>
+                  <div class='font-medium truncate'>{localStorage.mail ?? mail}</div>
                 </div>
                 {/* <ul
               class='py-2 text-sm text-gray-700 dark:text-gray-200'

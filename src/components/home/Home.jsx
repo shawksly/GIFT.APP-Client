@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import BottomBar from "../bottomBar/BottomBar";
 import ListGroup from "../listGroup/ListGroup";
+import ItemList from "../itemList/ItemList"
 import AddItem from "../addItem/AddItem";
 import TopNav from "../topNav/TopNav";
 import { useNavigate } from "react-router";
@@ -17,14 +18,25 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
 
   const [lists, setLists] = useState([]);
   const [showTopNav, setShowTopNav] = useState(true);
-  const loginCounter = useRef(0);
+  const [currentGifts, setCurrentGifts] = useState({});
+  const [currentGiftsId, setCurrentGiftsId] = useState('');
 
-  let listRoute = `http://localhost:4000/lists/list/owner/${userId}`;
+  const loginCounter = useRef(0);
+  
+  const navigate = useNavigate();
+
+  function chooseDisplayedGifts(list) {
+    setCurrentGifts(list)
+    setCurrentGiftsId(list._id)
+  }
+
+  let listsRoute = `http://localhost:4000/lists/list/owner/${userId}`;
+  let giftsRoute = `http://localhost:4000/gifts/gift/${currentGiftsId}`;
 
   async function fetchLists() {
     if (token)
       try {
-        let response = await fetch(listRoute, {
+        let response = await fetch(listsRoute, {
           headers: new Headers({
             "content-type": "application/json",
             authorization: token,
@@ -39,19 +51,47 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
         if (response.status === 200) {
           setLists(results.listOwner);
         } else {
-          console.log("No Results");
+          setLists({});
+          console.log("No Lists Yet");
         }
       } catch (error) {
         console.log(error);
       }
   }
 
-  const navigate = useNavigate();
+  async function fetchGifts() {
+    if (currentGifts && token)
+      try {
+        let response = await fetch(giftsRoute, {
+          headers: new Headers({
+            "content-type": "application/json",
+            authorization: token,
+          }),
+          method: "GET",
+        });
+
+        let results = await response.json();
+
+        console.log('GIFTS FETCH RESPONSE ', results);
+
+        if (response.status === 200) {
+          setCurrentGifts(results.getGifts);
+        } else {
+          setCurrentGifts({});
+          console.log("Gift List Empty");
+        };
+
+      } catch (error) {
+        console.log(error);
+      }
+  }
+
 
   useEffect(() => {
     console.log("logged in TEST ", isLoggedIn);
     loginCounter.current++;
     if (!isLoggedIn.current && loginCounter.current > 1) navigate("/auth");
+    fetchGifts();
   }, []);
 
   return (
@@ -61,6 +101,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
       <AllSearch/>
       <TwoBoxes/>
       <ListGroup token={token} fetchLists={fetchLists} lists={lists} />
+      <ItemList token={token} fetchGifts={fetchGifts} />
       <BottomBar token={token} fetchLists={fetchLists} clearUser={clearUser} name={name} mail={mail} photo={photo} />
     </>
   );
