@@ -44,7 +44,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
 
         console.log('results', results);
         if (response.status === 200) {
-          setLists(results.listOwner);
+          setLists(results);
         } else {
           setLists({});
           console.log('No Lists Yet');
