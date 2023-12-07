@@ -10,7 +10,9 @@ import TwoBoxes from "../twoBoxes/TwoBoxes";
 import Avatars from "../avatars/Avatars"
 import AllSearch from '../search/AllSearch'
 import ItemModal from "../itemModal/ItemModal";
+
 import ItemEditModal from '../itemModal/ItemEditModal'
+
 
 function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
   const [listDisplay, setListDisplay] = useState(true);
@@ -89,17 +91,6 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
   }, []);
 
   return (
-    <>
-<<<<<<< HEAD
-      <TopNav clearUser={clearUser} showTopNav={showTopNav} />
-      <Avatars/>
-      <AllSearch/>
-      <TwoBoxes/>
-      <ItemEditModal/>
-      <ListGroup token={token} fetchLists={fetchLists} lists={lists} />
-      <ItemList token={token} fetchGifts={fetchGifts} />
-      <BottomBar token={token} fetchLists={fetchLists} clearUser={clearUser} name={name} mail={mail} photo={photo} />
-=======
       <TopNav clearUser={clearUser} />
       <Avatars />
       <AllSearch />
@@ -137,7 +128,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
         mail={mail}
         photo={photo}
       />
->>>>>>> b2c40feffbf1c6963dbc1ea4655617ee5a6fc1e1
+
     </>
   );
 }
