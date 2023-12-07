@@ -77,7 +77,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
           setGifts(results);
         } else {
           setGifts({});
-          console.log('Gift List Empty');
+          console.log('Gift List Empty'); 
         }
       } catch (error) {
         console.log(error);
@@ -91,6 +91,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
   }, []);
 
   return (
+    <>
       <TopNav clearUser={clearUser} />
       <Avatars />
       <AllSearch />
