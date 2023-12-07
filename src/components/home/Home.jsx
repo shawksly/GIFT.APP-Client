@@ -29,7 +29,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
   }
 
   async function fetchLists() {
-    if (token)
+    if (token && userId)
       try {
         let response = await fetch(listsRoute, {
           headers: new Headers({
