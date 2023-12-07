@@ -20,28 +20,33 @@ function Signup({ updateUser, setNewUserStatus }) {
     console.log(email);
     console.log(password);
     console.log(userName);
-    console.log(image);
+    console.log({image});
 
     try {
-      //! fetch to server endpoint to get the link (from s3)
-      const url = await fetch('http://localhost:4000/geturl')
-        .then((res) => res.json())
-        .then((data) => {
-          console.log('JSON DATA ', data);
-          return data;
+
+      let imgURL;
+
+      if (image) {
+        //! fetch to server endpoint to get the link (from s3)
+        const url = await fetch('http://localhost:4000/geturl')
+          .then((res) => res.json())
+          .then((data) => {
+            console.log('JSON DATA ', data);
+            return data;
+          });
+
+        //! fetch to s3 to upload the image (PUT)
+        await fetch(url, {
+          method: 'PUT',
+          headers: new Headers({
+            'Content-Type': 'multipart/form-data',
+          }),
+          body: image,
         });
 
-      //! fetch to s3 to upload the image (PUT)
-      await fetch(url, {
-        method: 'PUT',
-        headers: new Headers({
-          'Content-Type': 'multipart/form-data',
-        }),
-        body: image,
-      });
-
-      const imgURL = url.split('?')[0];
-      console.log('imgURL ', imgURL);
+        imgURL = url.split('?')[0];
+        console.log('imgURL ', imgURL);
+      }
 
       //! fetch to our server's db to post the link
       let response = await fetch('http://localhost:4000/user/signup', {
@@ -61,19 +66,19 @@ function Signup({ updateUser, setNewUserStatus }) {
       let results = await response.json();
       console.log('RESULTS ', results);
 
-        if (response.status === 200) {
-          updateUser(
-            results.token,
-            results.user._id,
-            results.user.userName,
-            results.user.email,
-            results.user.img
-          );
-          console.log('UPDATEUSER', updateUser);
-          navigate('/');
-        } else {
-          console.log('Signup Missed');
-        }
+      if (response.status === 200) {
+        updateUser(
+          results.token,
+          results.user._id,
+          results.user.userName,
+          results.user.email,
+          results.user.img
+        );
+        console.log('UPDATEUSER', updateUser);
+        navigate('/');
+      } else {
+        console.log('Signup Missed');
+      }
 
       // let imgForm = document.querySelector('.imgForm');
 
