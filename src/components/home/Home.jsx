@@ -1,14 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence } from 'framer-motion';
-import BottomBar from '../bottomBar/BottomBar';
-import ListGroup from '../listGroup/ListGroup';
-import ItemList from '../itemList/ItemList';
-import AddItem from '../addItem/AddItem';
-import TopNav from '../topNav/TopNav';
-import { useNavigate } from 'react-router';
-import TwoBoxes from '../twoBoxes/TwoBoxes';
-import Avatars from '../avatars/Avatars';
-import AllSearch from '../search/AllSearch';
+import BottomBar from "../bottomBar/BottomBar";
+import ListGroup from "../listGroup/ListGroup";
+import ItemList from "../itemList/ItemList"
+import AddItem from "../addItem/AddItem";
+import TopNav from "../topNav/TopNav";
+import { useNavigate } from "react-router";
+import TwoBoxes from "../twoBoxes/TwoBoxes";
+import Avatars from "../avatars/Avatars"
+import AllSearch from '../search/AllSearch'
+import ItemModal from "../itemModal/ItemModal";
 
 function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
   const [listDisplay, setListDisplay] = useState(true);
@@ -92,6 +93,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
       <Avatars />
       <AllSearch />
       <TwoBoxes />
+      <ItemModal/>
       <div className='relative'>
         <AnimatePresence initial={false}>
           {listDisplay ? (
