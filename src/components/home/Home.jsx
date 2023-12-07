@@ -11,6 +11,9 @@ import Avatars from "../avatars/Avatars"
 import AllSearch from '../search/AllSearch'
 import ItemModal from "../itemModal/ItemModal";
 
+import ItemEditModal from '../itemModal/ItemEditModal'
+
+
 function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
   const [listDisplay, setListDisplay] = useState(true);
   const [lists, setLists] = useState([]);
@@ -88,7 +91,6 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
   }, []);
 
   return (
-    <>
       <TopNav clearUser={clearUser} />
       <Avatars />
       <AllSearch />
@@ -126,6 +128,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
         mail={mail}
         photo={photo}
       />
+
     </>
   );
 }

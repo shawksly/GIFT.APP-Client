@@ -3,8 +3,10 @@ import React from 'react'
 function ItemModal() {
   return (
     <div className='flex justify-center items-center' >
-    <div className="w-20 p-4 m-0 px-0 pb-0 pt-2 box-border font-poppins min-w-[30vw] bg-gradient-to-br from-gray-500 via-blue-300 to-purple-200 justify-center items-  relative overflow-hidden border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-      <h5 className="mb-4 text-xl font-medium text-gray-200 dark:text-gray-400">New Item</h5>
+   <div className="box-border w-30 h-80 font-poppins bg-gradient-to-br from-gray-500 via-blue-300 to-purple-20 justify-center items-center relative overflow-hidden border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+
+
+      <h5 className="mb-4 mt-4 text-xl font-medium text-gray-200 dark:text-gray-400">New Item</h5>
       <div className="flex items-baseline text-gray-900 dark:text-white">
         <span className="text-3xl font-semibold">$</span>
         <span className="text-5xl font-extrabold tracking-tight">49</span>

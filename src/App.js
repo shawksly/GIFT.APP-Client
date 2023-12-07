@@ -20,6 +20,7 @@ import ItemList from './components/itemList/ItemList';
 import List from './components/list/List.jsx';
 import ImageTestII from './components/imageTestII/ImageTestII'
 import ItemModal from './components/itemModal/ItemModal';
+import ItemEditModal from './components/itemModal/ItemEditModal'
 
 
 function App() {
@@ -112,8 +113,8 @@ function App() {
         <Route path="/add" element={<AddItem updateUser={updateUser} />} />
         <Route path="/addlist" element={<AddList updateUser={updateUser} />} />
         <Route path="/itemlist" element={<ItemList updateUser={updateUser} />} />
-        <Route path="/itemModal" element={<ItemModal updateUser={updateUser} />} />
-<Route path='/list2' element={<List />} />
+        <Route path="/test" element={<ItemEditModal updateUser={updateUser} />} />
+{/* <Route path='/list2' element={<List />} /> */}
 <Route path='/home' element={<Home isLoggedIn={isLoggedIn}
               token={token}
               clearUser={clearUser}
