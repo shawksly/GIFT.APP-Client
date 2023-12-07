@@ -2,6 +2,7 @@ import { useEffect, Fragment } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import ItemList from '../itemList/ItemList';
+import TwoBoxes from '../twoBoxes/TwoBoxes';
 
 import './ListGroup.css';
 
