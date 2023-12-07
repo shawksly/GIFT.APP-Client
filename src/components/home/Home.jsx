@@ -9,6 +9,7 @@ import TwoBoxes from "../twoBoxes/TwoBoxes";
 import Avatars from "../avatars/Avatars"
 import AllSearch from '../search/AllSearch'
 import ItemModal from "../itemModal/ItemModal";
+import ItemEditModal from '../itemModal/ItemEditModal'
 
 
 
@@ -101,7 +102,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
       <Avatars/>
       <AllSearch/>
       <TwoBoxes/>
-      <ItemModal/>
+      <ItemEditModal/>
       <ListGroup token={token} fetchLists={fetchLists} lists={lists} />
       <ItemList token={token} fetchGifts={fetchGifts} />
       <BottomBar token={token} fetchLists={fetchLists} clearUser={clearUser} name={name} mail={mail} photo={photo} />
