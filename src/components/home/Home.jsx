@@ -12,6 +12,7 @@ import AllSearch from '../search/AllSearch'
 import ItemModal from "../itemModal/ItemModal";
 
 import ItemEditModal from '../itemModal/ItemEditModal'
+import ListToggle from '../listToggle/ListToggle'
 
 
 function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
