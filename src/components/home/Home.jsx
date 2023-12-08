@@ -11,6 +11,7 @@ import TwoBoxes from "../twoBoxes/TwoBoxes";
 import Avatars from "../avatars/Avatars"
 import AllSearch from '../search/AllSearch'
 import ItemModal from '../itemModal/ItemModal';
+import FriendsList from '../friendsList/FriendsList'
 
 import ItemEditModal from '../itemModal/ItemEditModal'
 import ListToggle from '../listToggle/ListToggle'
