@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { AnimatePresence } from 'framer-motion';
+import useComponentVisible from '../../utils/useComponentVisible';
 import BottomBar from "../bottomBar/BottomBar";
 import ListGroup from "../listGroup/ListGroup";
 import ItemList from "../itemList/ItemList"
@@ -9,7 +10,7 @@ import { useNavigate } from "react-router";
 import TwoBoxes from "../twoBoxes/TwoBoxes";
 import Avatars from "../avatars/Avatars"
 import AllSearch from '../search/AllSearch'
-import ItemModal from "../itemModal/ItemModal";
+import ItemModal from '../itemModal/ItemModal';
 
 import ItemEditModal from '../itemModal/ItemEditModal'
 import ListToggle from '../listToggle/ListToggle'
@@ -32,6 +33,13 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
     // setGifts(giftList.gifts)
     // setGiftsId(giftList._id)
   }
+
+  const {
+    dropDownRef: dropdownRefItem,
+    buttonRef: buttonRefItem,
+    isComponentVisible: isComponentVisibleItem,
+    setIsComponentVisible: setIsComponentVisibleItem,
+  } = useComponentVisible(false);
 
   async function fetchLists() {
     if (token && userId)
@@ -93,11 +101,11 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
 
   return (
     <>
-      <TopNav clearUser={clearUser} />
+      {/* <TopNav clearUser={clearUser} /> */}
       <Avatars />
-      <AllSearch />
-      <TwoBoxes />
-      <ItemModal/>
+      {/* <AllSearch /> */}
+      {/* <TwoBoxes /> */}
+      <ItemModal ref={dropdownRefItem} />
       <div className='relative'>
         <AnimatePresence initial={false}>
           {listDisplay ? (
@@ -117,6 +125,8 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
               gifts={gifts}
               giftsId={giftsId}
               fetchGifts={fetchGifts}
+              buttonRefItem={buttonRefItem}
+              setIsComponentVisibleItem={setIsComponentVisibleItem}
             />
           )}
         </AnimatePresence>
@@ -124,7 +134,10 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
       <BottomBar
         token={token}
         fetchLists={fetchLists}
+        fetchGifts={fetchGifts}
         setListDisplay={setListDisplay}
+        listDisplay={listDisplay}
+        giftsId={giftsId}
         clearUser={clearUser}
         name={name}
         mail={mail}

@@ -1,157 +1,193 @@
-import {React, useState} from 'react';
-import PropTypes from "prop-types"
+import { React, useState } from 'react';
+import PropTypes from 'prop-types';
 
+function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
+  const [title, setTitle] = useState('');
+  const [price, setPrice] = useState('');
+  const [description, setDescription] = useState('');
+  const [emoji, setEmoji] = useState('');
+  const [image, setImage] = useState('');
+  const [link, setLink] = useState('');
 
-function AddItem(props) {
+  const addGiftRoute = `http://localhost:4000/gifts/create/${giftsId}`;
 
-  const [title, setTitle] = useState ('')
-  const [price, setPrice] = useState ('')
-  const [description, setDescription] = useState ('')
-  const [img, setimg] = useState ('')
+  async function addGiftInput(e) {
+    e.preventDefault();
+    console.log('testing this function');
+    console.log(title);
+    console.log(price);
+    console.log(description);
+    console.log(emoji);
+    console.log(image);
+    console.log(link);
 
+    try {
 
-  const addGiftRoute = 'http://localhost:4000/gifts/create/'
+      let imgURL;
 
-async function AddItemInput(e) {
-  e.preventDefault();
-  console.log("testing this function")
-  console.log(title)
-  console.log(price)
-  console.log(description)
-  console.log(img)
+      if (image) {
+        //! fetch to server endpoint to get the link (from s3)
+        const url = await fetch('http://localhost:4000/geturl')
+          .then((res) => res.json())
+          .then((data) => {
+            console.log('JSON DATA ', data);
+            return data;
+          });
 
+        //! fetch to s3 to upload the image (PUT)
+        await fetch(url, {
+          method: 'PUT',
+          headers: new Headers({
+            'Content-Type': 'multipart/form-data',
+          }),
+          body: image,
+        });
 
+        imgURL = url.split('?')[0];
+        console.log('imgURL ', imgURL);
+      }
 
-  try {
-    let response = await fetch (addGiftRoute, {
-      headers: new Headers ({
-        "content-type": "application/json"
-      }),
-      method: "POST",
-
-     
-       
-      body: JSON.stringify
-
-      ({ title: title,
-        description: description,
-        price: price,
-
-
-      }),
+      //! fetch to our server's db to post the link
+      let response = await fetch(addGiftRoute, {
+        headers: new Headers({
+          'content-type': 'application/json',
+          authorization: token,
+        }),
+        method: 'POST',
+        body: JSON.stringify({
+          title: title,
+          img: imgURL,
+          description: description,
+          price: price,
+          link: link,
+        }),
       });
-    
-        
-      
-    
 
-    console.log(response);
       let results = await response.json();
-      props.setToken(results.token);
+      
+      console.log(results);
 
       if (response.status === 200) {
-       console.log("Goodness!!") 
+        fetchGifts();
+        setIsComponentVisibleAdd(false);
       } else {
         console.log("You didn't add the item!!");
       }
     } catch (error) {}
   }
-    
-  
-
-
 
   return (
-    <div className=' box-border h-auto w-auto p-4 border-4 bg-gradient-to-r from-slate-500 to-purple-200 bg-opacity-1/8 backdrop-blur-30'> 
-    
-    <div>
-     
-     <p className='ml-20 text-gray-700'>Add New Gift</p>
-{/* 
-        <label for="underline_select" class="sr-only">
-          Underline select
-        </label>
-        <select
-          id="underline_select"
-          class="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-        >
-          <option selected>Add New Gift</option>
-          <option value="BD">Birthday</option>
-          <option value="HL">Holiday</option>
-          <option value="RG">Registry</option>
-          <option value="GL">Group List</option>
-        </select> */}
+    <div className=' box-border h-auto w-auto p-4 border-4 bg-gradient-to-r from-slate-500 to-purple-200 bg-opacity-1/8 backdrop-blur-30'>
+      <div>
+        <p className='ml-20 text-gray-700 font-poppins'>Add New Gift</p>
 
-        <div className="mb-6">
+        <div className='mb-6'>
           <label
-            htmlFor="large-input"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            htmlFor='large-input'
+            className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
           >
             Title
           </label>
           <input
-            type="text"
-            id="large-input"
-            className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            type='text'
+            id='large-input'
+            className='block w-full text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
           />
         </div>
-        <div className="mb-6">
+        <div className='mb-6'>
           <label
-            htmlFor="default-input"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            htmlFor='default-input'
+            className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
           >
             Description
           </label>
-          <input
-            type="text"
-            id="default-input"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          <textarea
+            type='text'
+            id='default-input'
+            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
           />
         </div>
         <div>
           <label
-            htmlFor="small-input"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            htmlFor='small-input'
+            className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
           >
             Price
           </label>
           <input
-            type="text"
-            id="small-input"
-            className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            type='number'
+            id='small-input'
+            className='block w-[90%] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
           />
         </div>
-      </div  >
-
-      {/* <label className=" flex-row  relative inline-flex items-center cursor-pointer">
+        <div>
+          <label
+            htmlFor='small-input'
+            className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+          >
+            Link
+          </label>
+          <input
+            type='url'
+            id='small-input'
+            className='block w-[90%] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            onChange={(e) => {
+              setLink(e.target.value);
+            }}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor='small-input'
+            className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+          >
+            Emoji (enter an emoji, or couple characters to represent your list)
+          </label>
+          <input
+            type='text'
+            maxLength="2"
+            id='small-input'
+            className='block w-full text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            onChange={(e) => {
+              setEmoji(e.target.value);
+            }}
+          />
+        </div>
+        <label
+          className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+          for='file_input'
+        >
+          Upload Image
+        </label>
         <input
-          type="checkbox"
-          value=""
-          className="sr-only peer"
-          defaultChecked
+          className='block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400'
+          id='file_input'
+          type='file'
+          onChange={(e) => {
+            setImage(e.target.files[0]);
+          }}
         />
-        <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-        <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-          Public
-        </span>
-      </label> */}
+      </div>
 
       <button
-        className=" flex-row ml-30 mb-6 bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-medium py-2 px-4 rounded-md hover:bg-indigo-600 hover:to-black transition ease-in duration-200 mt-5"
-        type="submit"
+        className=' flex-row ml-30 mb-6 bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-medium py-2 px-4 rounded-md hover:bg-indigo-600 hover:to-black transition ease-in duration-200 mt-5'
+        type='submit'
+        onClick={addGiftInput}
       >
         Add Item
       </button>
-      
-
-<label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image</label>
-<input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"/>
-
-</div>
-
-  
-      
-
+      {/* This creates the arrow pointing to the button */}
+      <div className='content-none absolute top-full left-1/2 -ml-3 border-[0.75rem] border-solid border-gray-200 dark:border-gray-700 border-x-transparent border-b-transparent'></div>
+    </div>
   );
 }
 
