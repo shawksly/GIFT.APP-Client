@@ -2,7 +2,7 @@ import React from 'react'
 
 function FriendsList() {
   return (
-    <div></div>
+    <div> FriendsList </div>
   )
 }
 
