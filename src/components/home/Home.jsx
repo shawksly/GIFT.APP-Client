@@ -105,7 +105,9 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
       <Avatars />
       {/* <AllSearch /> */}
       {/* <TwoBoxes /> */}
+      {isComponentVisibleItem &&
       <ItemModal ref={dropdownRefItem} />
+      }
       <div className='relative'>
         <AnimatePresence initial={false}>
           {listDisplay ? (
