@@ -13,16 +13,24 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
 
   async function addGiftInput(e) {
     e.preventDefault();
+    
+    // formatting link input into clickable link
+    let formattedLink;
+    !link.includes('http://') && !link.includes('https://')
+    ? formattedLink = `https://${link}`
+    : formattedLink = link
+
+    let urlLink = new URL(formattedLink);
+
     console.log('testing this function');
     console.log(title);
     console.log(price);
     console.log(description);
     console.log(emoji);
     console.log(image);
-    console.log(link);
+    console.log(urlLink.href);
 
     try {
-
       let imgURL;
 
       if (image) {
@@ -58,13 +66,14 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
           title: title,
           img: imgURL,
           description: description,
+          emoji: emoji,
           price: price,
-          link: link,
+          link: urlLink.href,
         }),
       });
 
       let results = await response.json();
-      
+
       console.log(results);
 
       if (response.status === 200) {
@@ -106,6 +115,7 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
           </label>
           <textarea
             type='text'
+            maxLength='50'
             id='default-input'
             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             onChange={(e) => {
@@ -120,14 +130,17 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
           >
             Price
           </label>
+          <div className='flex items-center text-sm font-medium text-gray-900 dark:text-white'>
+            $
           <input
             type='number'
             id='small-input'
-            className='block w-[90%] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            className='block w-full ms-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             onChange={(e) => {
               setPrice(e.target.value);
             }}
           />
+        </div>
         </div>
         <div>
           <label
@@ -136,25 +149,28 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
           >
             Link
           </label>
-          <input
-            type='url'
-            id='small-input'
-            className='block w-[90%] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-            onChange={(e) => {
-              setLink(e.target.value);
-            }}
-          />
+          <div className='flex items-center text-sm font-medium text-gray-900 dark:text-white'>
+            https://
+            <input
+              type='url'
+              id='small-input'
+              className='block w-full ms-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+              onChange={(e) => {
+                setLink(e.target.value);
+              }}
+            />
+          </div>
         </div>
         <div>
           <label
             htmlFor='small-input'
             className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
           >
-            Emoji (enter an emoji, or couple characters to represent your list)
+            Emoji<br/>(enter an emoji, or couple characters to represent your list)
           </label>
           <input
             type='text'
-            maxLength="2"
+            maxLength='2'
             id='small-input'
             className='block w-full text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             onChange={(e) => {
