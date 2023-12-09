@@ -33,9 +33,17 @@ function BottomBar({
 
   const navigate = useNavigate();
 
+  const [isProfileEditingVisible, setProfileEditingVisible] = useState(false);
+
+  const handleEditProfileClick = () => {
+    setProfileEditingVisible(!isProfileEditingVisible);
+  };
+  
+
   function logout() {
     clearUser();
     navigate('/auth');
+    
   }
 
   return (
@@ -334,6 +342,52 @@ function BottomBar({
                 </a>
               </li>
             </ul> */}
+
+<div>
+            <div> <button onClick={handleEditProfileClick} > Edit Profile </button> </div>
+
+            {isProfileEditingVisible && (
+             <form className="p-4 md:p-5">
+            <div className="grid gap-4 mb-4 grid-cols-2">
+              <div className="col-span-2">
+                <label
+                  for="name"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Change User Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder="Type new User name"
+                  required=""
+                />
+                <button className='mt-2 bg-slate-800 border border-gray-300 text-gray-200 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500  hover:bg-gray-700' type = "submit" >
+
+Update
+                </button>
+              </div>
+       
+              </div>
+              <label
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white "
+                    for="file_input"
+                  >
+                   Edit Profile Image
+                  </label>
+                  <input
+                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    id="file_input"
+                    type="file"
+                  />
+              </form>
+            )}
+<div>
+                 
+                </div>
+                </div>
                 <div className='py-1' role='button' onClick={logout}>
                   <a className='block px-4 py-2 text-sm text-gray-700 hover:text-gray-100 hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'>
                     Sign out

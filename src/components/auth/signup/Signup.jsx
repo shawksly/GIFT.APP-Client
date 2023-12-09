@@ -114,7 +114,7 @@ function Signup({ updateUser, setNewUserStatus }) {
             className=' bg-slate-600 text-white border-0 rounded-md p-2 mb-4 focus:bg-slate-500 focus:outline-blue-200 transition ease-in-out duration-150 place-content-baseline placeholder-gray-300'
             type='password'
           />
-          <label
+          {/* <label
             class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
             for='file_input'
           >
@@ -133,7 +133,7 @@ function Signup({ updateUser, setNewUserStatus }) {
             type='submit'
           >
             Submit
-          </button>
+          </button> */}
           <p className='text-white mt-4 text-center'>
             Already Have an Account?
             <a

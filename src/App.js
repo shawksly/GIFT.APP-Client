@@ -23,6 +23,7 @@ import ItemModal from './components/itemModal/ItemModal';
 import ItemEditModal from './components/itemModal/ItemEditModal'
 import ListToggle from './components/listToggle/ListToggle';
 import FriendsList from './components/friendsList/FriendsList.jsx'
+import BackButton from './components/backButton/BackButton'
 
 
 function App() {
@@ -115,7 +116,7 @@ function App() {
         <Route path="/add" element={<AddItem updateUser={updateUser} />} />
         <Route path="/addlist" element={<AddList updateUser={updateUser} />} />
         <Route path="/itemlist" element={<ItemList updateUser={updateUser} />} />
-        <Route path="/test" element={<FriendsList updateUser={updateUser} />} />
+        <Route path="/test" element={<BackButton updateUser={updateUser} />} />
 {/* <Route path='/list2' element={<List />} /> */}
 <Route path='/home' element={<Home isLoggedIn={isLoggedIn}
               token={token}
@@ -124,6 +125,7 @@ function App() {
               name={name}
               mail={mail}
               photo={photo} />} />
+
 
       </Routes>
     </BrowserRouter>

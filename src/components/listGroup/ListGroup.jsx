@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import ItemList from '../itemList/ItemList';
 import TwoBoxes from '../twoBoxes/TwoBoxes';
 import ListToggle from '../listToggle/ListToggle';
+import BackButton from '../backButton/BackButton';
 
 import './ListGroup.css';
 
@@ -46,6 +47,7 @@ function ListGroup({
       }}
       className='absolute'
     >
+       <BackButton to = {-1}/>
       <div className='m-0 px-0 pb-0 pt-2 box-border font-poppins min-h-screen min-w-[100vw] flex flex-col content-center items-center justify-items-center justify-center relative overflow-hidden bg-[#222]'>
         <div className='flex flex-col content-center items-center justify-items-center'>
           {photo ? (
