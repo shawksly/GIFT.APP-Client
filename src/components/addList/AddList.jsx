@@ -78,7 +78,7 @@ function AddList({ token, fetchLists, setIsComponentVisibleAdd }) {
             htmlFor='large-input'
             className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
           >
-            Emoji (enter an emoji, or couple characters to represent your list)
+            Emoji<br/>(enter an emoji, or couple characters to represent your list)
           </label>
           <input
             type='text'
