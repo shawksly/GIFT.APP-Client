@@ -32,9 +32,9 @@ function FriendsList() {
                         </div>
 
 
-                        <div class="relative me-4">
-    <img class="w-10 h-10 rounded-full" src="https://pixsector.com/cache/05d114c9/av16245af1936bbffccf4.png" alt="profile image"/>
-    <span class="top-0 start-7 absolute w-3.5 h-3.5 bg-green-500 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                        <div className="relative me-4">
+    <img className="w-10 h-10 rounded-full" src="https://pixsector.com/cache/05d114c9/av16245af1936bbffccf4.png" alt="profile image"/>
+    <span className="top-0 start-7 absolute w-3.5 h-3.5 bg-green-500 border-2 border-white dark:border-gray-800 rounded-full"></span>
 </div>
 
 

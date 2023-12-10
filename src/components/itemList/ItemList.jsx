@@ -4,13 +4,11 @@ import './ItemList.css';
 
 
 import ListEmojiBar from '../listEmojiBar/ListEmojiBar';
-import Avatars from '../avatars/Avatars';
 import SaveList from '../listEmojiBar/SaveList';
 import BackButton from '../backButton/BackButton';
 
 function ItemList({
   token,
-  setListDisplay,
   gifts,
   giftsId,
   setItem,
@@ -43,12 +41,11 @@ function ItemList({
       className='absolute'
     >
       <ListEmojiBar />
-      <Avatars />
       <SaveList />
      
     
 
-      <div className='m-0 px-0 pb-0 pt-2 box-border font-poppins min-h-screen min-w-[100vw] flex items-center justify-center relative overflow-hidden bg-[#222]'>
+      <div className='mx-0 mt-14 mb-24 px-0 pb-0 pt-2 box-border font-poppins min-h-screen min-w-[100vw] flex items-center justify-center relative overflow-hidden bg-[#222]'>
         <div className='m-0 box-border font-poppins min-w-[350px] max-w-[350px] min-h-[200px] bg-[#ffffff1a] bg-opacity-25 rounded-[10px] z-10 p-5'>
           <h3 className='mx-0 mt-0 mb-[25px] px-0 pb-0 pt-2 box-border font-poppins text-white'>
             ITEM.LISTS
