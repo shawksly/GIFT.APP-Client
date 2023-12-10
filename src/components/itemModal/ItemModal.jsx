@@ -62,6 +62,14 @@ function ItemModal({ token, dropdownRefItem, item, itemId }) {
             Link to Buy
           </button>
         </a>
+        {/* <button
+      type="button"
+      className="text-gray-400 bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 focus: grey- hover:text-red-900 rounded-lg text-sm w-8 h-8 ms-2 inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-red border-b border-red-900"
+      data-modal-toggle="edit-modal"
+    >
+   <h3>Edit</h3>
+      <span className="sr-only">Edit</span>
+    </button> */}
         {item.img && (
           <img
             className='absolute object-scale-down object-right-bottom rounded-br-lg bottom-0 right-0 w-1/2 h-1/3'
