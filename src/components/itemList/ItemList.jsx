@@ -65,8 +65,22 @@ function ItemList({
                   setItemId(gift._id);
                 }}
                 className='mx-0 mb-0 mt-2.5 p=10 box-border font-poppins relative overflow-hidden flex justify-items-stretch justify-between p-2.5 gap-2.5 rounded-[10px] bg-[#0000001a] cursor-pointer transition-all duration-200 ease-linear hover:bg-zinc-100 hover:scale-[1.03] hover:translate-x-[6px] hover:translate-y-[-3px] group/list'
-              >
-                <div className='flex grow flex-col min-w-0 m-0 px-0 pb-0 pt-1 box-border font-poppins text-white'>
+              > 
+             
+              <div className='m-0 p-8 mr-30  box-border font-poppins text-white absolute bottom-0-right-2 right-24 flex flex-row w-14 h-20 duration-200 '>
+             <div className='hover:opacity-100 transition-opacity' ></div> 
+                        <button
+                          // onClick={() => navigate('/ItemList')}
+                          className='w-14 bg-blue-500 rounded-5 grow '
+                        >
+                          Edit
+                        </button>
+                        <button className='w-14 bg-red-500 rounded-5 grow mr-1'>
+                          Delete
+                        </button>
+                      </div>
+                   
+                <div className='flex grow flex-col min-w-0 m-0 ml-1 px-0 pb-0 pt-1 box-border font-poppins text-white'>
                   <h2 className='absolute right-[-65px] top-1/2 -translate-y-1/2 text-[#00aeff] duration-200 text-[2em] group-hover/list:right-6'>
                     <small className='font-medium opacity-25'>#</small>{' '}
                     {index + 1}

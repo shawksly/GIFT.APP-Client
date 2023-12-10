@@ -129,7 +129,7 @@ function App() {
         <Route path="/add" element={<AddItem updateUser={updateUser} />} />
         <Route path="/addlist" element={<AddList updateUser={updateUser} />} />
         <Route path="/itemlist" element={<ItemList updateUser={updateUser} />} />
-        <Route path="/test" element={<ItemEditModal updateUser={updateUser} />} />
+        <Route path="/test" element={<FriendsList updateUser={updateUser} />} />
 {/* <Route path='/list2' element={<List />} /> */}
 <Route path='/home' element={<Home isLoggedIn={isLoggedIn}
               token={token}

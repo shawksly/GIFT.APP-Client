@@ -36,7 +36,7 @@ function ListToggle({ displayFriends, setDisplayFriends }) {
   };
 
   return (
-    <div className='mt-4 mb-3 flex items-center justify-center'>
+    <div className='mt-4 mb-3 flex items-center justify-center '>
       <input
         type='checkbox'
         name='check'
@@ -51,7 +51,7 @@ function ListToggle({ displayFriends, setDisplayFriends }) {
         <motion.div
           // animate
           className={`w-64 h-20 bg-[#ffffff1a] flex flex-col content-center items-center justify-center rounded-[10px] relative ${
-            displayFriends ? 'text-zinc-100' : 'text-black'
+            displayFriends ? 'text-zinc-100' : 'text-zinc-100'
           }`}
         >
           <h5 className='absolute z-10 left-7'>My.Lists</h5>
@@ -63,14 +63,14 @@ function ListToggle({ displayFriends, setDisplayFriends }) {
             className={`box relative w-60 h-16 bg-zinc-300 rounded-[20px] flex items-center p-1 transform ${
               displayFriends
                 ? 'bg-black justify-end'
-                : 'bg-zinc-100 justify-start'
+                : 'bg-[#f4f4f5] bg-opacity-20 justify-start'
             }`}
           >
             <motion.div
               // variants={ballVariants}
               // initial='left'
               // animate='right'
-              className={`ball h-14 bg-white rounded-[15px] shadow-md ${
+              className={`ball h-14 bg-zinc-800 rounded-[15px] shadow-md ${
                 displayFriends ? 'w-32 bg-red-900' : 'w-24 bg-green-900'
                 // ? 'w-24 translate-x-0 bg-green-900'
                 // : 'w-32 left-full -translate-x-full bg-red-900'
