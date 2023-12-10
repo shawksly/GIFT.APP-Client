@@ -128,7 +128,7 @@ function ListGroup({
                             Delete
                           </button>
                         </div>
-                      ) : !list.img ? (
+                      ) : list.img ? (
                         <img
                           id='avatarButton'
                           className='absolute m-0 p-0 box-border bottom-0 -right-14 w-14 h-20 object-cover border-2 border-purple-300 rounded-[10px] duration-200 group-hover/list:-right-0'
@@ -137,7 +137,7 @@ function ListGroup({
                         />
                       ) : (
                         <span className='absolute m-0 p-0 box-border bottom-0 -right-14 w-14 h-20 text-center flex flex-col justify-center font-medium text-2xl border-2 bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 border-purple-300 rounded-[10px] text-zinc-100 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 duration-200 group-hover/list:-right-0 uppercase min-w-0'>
-                          <div className=''>{list.userName.slice(0, 2)}</div>
+                          <div className=''>{list.userName?.slice(0, 2)}</div>
                         </span>
                       )}
                     </div>
