@@ -7,10 +7,27 @@ function ListToggle({ displayFriends, setDisplayFriends }) {
     left: {
       backgroundColor: 'black',
       color: '#f4f4f5',
+      justifyContent: 'flex-start',
     },
     right: {
       backgroundColor: 'black',
       color: '#f4f4f5',
+      justifyContent: 'flex-end',
+      transition: {
+        type: 'spring',
+        stiffness: 120,
+      },
+    },
+  };
+
+  const ballVariants = {
+    left: {
+      width: '6rem',
+      backgroundColor: '#14532d',
+    },
+    right: {
+      width: '8rem',
+      backgroundColor: '#7f1d1d',
       transition: {
         type: 'spring',
         stiffness: 120,
@@ -40,7 +57,6 @@ function ListToggle({ displayFriends, setDisplayFriends }) {
           <h5 className='absolute z-10 left-7'>My.Lists</h5>
           <h5 className='absolute z-10 right-6'>Friends.Lists</h5>
           <motion.div
-            animate
             // variants={containerVariants}
             // initial='left'
             // animate='right'
@@ -51,7 +67,9 @@ function ListToggle({ displayFriends, setDisplayFriends }) {
             }`}
           >
             <motion.div
-              animate
+              // variants={ballVariants}
+              // initial='left'
+              // animate='right'
               className={`ball h-14 bg-white rounded-[15px] shadow-md ${
                 displayFriends ? 'w-32 bg-red-900' : 'w-24 bg-green-900'
                 // ? 'w-24 translate-x-0 bg-green-900'
@@ -66,3 +84,6 @@ function ListToggle({ displayFriends, setDisplayFriends }) {
 }
 
 export default ListToggle;
+
+// why no colors
+// useComponentVisible

@@ -18,7 +18,7 @@ function AddList({ token, fetchLists, setIsComponentVisibleAdd }) {
         body: JSON.stringify({
           title: title,
           description: description,
-          emoji: emoji
+          emoji: emoji,
         }),
       });
 
@@ -78,11 +78,13 @@ function AddList({ token, fetchLists, setIsComponentVisibleAdd }) {
             htmlFor='large-input'
             className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
           >
-            Emoji<br/>(enter an emoji, or couple characters to represent your list)
+            Emoji
+            <br />
+            (enter an emoji, or couple characters to represent your list)
           </label>
           <input
             type='text'
-            maxLength="2"
+            maxLength='2'
             id='large-input'
             className='block w-full text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             onChange={(e) => {
