@@ -1,9 +1,10 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useEffect, Fragment } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import ItemList from '../itemList/ItemList';
 import TwoBoxes from '../twoBoxes/TwoBoxes';
 import ListToggle from '../listToggle/ListToggle';
+import Avatars from '../avatars/Avatars';
 import BackButton from '../backButton/BackButton';
 
 import './ListGroup.css';
@@ -15,10 +16,14 @@ function ListGroup({
   lists,
   fetchFriendsLists,
   setGiftsId,
+  setCurrentListId,
   name,
   photo,
+  friends,
   displayFriends,
   setDisplayFriends,
+  setIsComponentVisibleEditList,
+  buttonRefEditList,
 }) {
   useEffect(() => {
     if (!displayFriends) {
@@ -47,8 +52,8 @@ function ListGroup({
       }}
       className='absolute'
     >
-       <BackButton to = {-1}/>
-      <div className='m-0 px-0 pb-0 pt-2 box-border font-poppins min-h-screen min-w-[100vw] flex flex-col content-center items-center justify-items-center justify-center relative overflow-hidden bg-[#222]'>
+      {/* <BackButton to = {-1}/> */}
+      <div className='mx-0 mt-14 mb-24 px-0 pb-0 pt-2 box-border font-poppins min-h-screen min-w-[100vw] flex flex-col content-center items-center justify-items-center justify-center relative overflow-hidden bg-[#222]'>
         <div className='flex flex-col content-center items-center justify-items-center'>
           {photo ? (
             <img
@@ -57,8 +62,8 @@ function ListGroup({
               alt='Rounded avatar'
             ></img>
           ) : (
-            <div class='relative inline-flex items-center justify-center w-20 h-20 overflow-hidden ring-4 ring-purple-200 bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 rounded-full dark:bg-gray-600'>
-              <span class='font-medium text-5xl text-zinc-100 dark:text-gray-300 uppercase'>
+            <div className='relative inline-flex items-center justify-center w-20 h-20 overflow-hidden ring-4 ring-purple-200 bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 rounded-full dark:bg-gray-600'>
+              <span className='font-medium text-5xl text-zinc-100 dark:text-gray-300 uppercase'>
                 {localStorage.name.slice(0, 2) ?? name.slice(0, 2)}
               </span>
             </div>
@@ -67,7 +72,8 @@ function ListGroup({
             displayFriends={displayFriends}
             setDisplayFriends={setDisplayFriends}
           />
-          <div className='m-0 box-border font-poppins min-w-[350px] max-w-[350px] min-h-[400px] bg-[#ffffff1a] bg-opacity-25 rounded-[10px] z-10 p-5'>
+          <div className='relative m-0 box-border font-poppins min-w-[350px] max-w-[350px] min-h-[400px] bg-[#ffffff1a] bg-opacity-25 rounded-[10px] z-10 p-5'>
+            {displayFriends && <Avatars friends={friends} />}
             <h3 className='mx-0 mt-0 mb-[25px] px-0 pb-0 pt-2 box-border font-poppins text-white'>
               {!displayFriends ? 'GIFT.LISTS' : `FRIENDS.LISTS`}
             </h3>
@@ -105,17 +111,35 @@ function ListGroup({
                           </p>
                         </div>
                       </div>
-                      <div className='m-0 p-0 box-border font-poppins text-white absolute bottom-0 -right-14 flex flex-col w-14 h-20 duration-200 group-hover/list:-right-0'>
-                        <button
-                          onClick={() => navigate('/ItemList')}
-                          className='w-14 bg-blue-500 rounded-5 grow'
-                        >
-                          Edit
-                        </button>
-                        <button className='w-14 bg-red-500 rounded-5 grow'>
-                          Delete
-                        </button>
-                      </div>
+                      {/* // TODO display alternate */}
+                      {!displayFriends ? (
+                        <div className='m-0 p-0 box-border font-poppins text-white absolute bottom-0 -right-14 flex flex-col w-14 h-20 duration-200 group-hover/list:-right-0'>
+                          <button
+                            ref={buttonRefEditList}
+                            onClick={() => {
+                              setCurrentListId(list._id);
+                              setIsComponentVisibleEditList(true);
+                            }}
+                            className='w-14 bg-blue-500 rounded-5 grow'
+                          >
+                            Edit
+                          </button>
+                          <button className='w-14 bg-red-500 rounded-5 grow'>
+                            Delete
+                          </button>
+                        </div>
+                      ) : !list.img ? (
+                        <img
+                          id='avatarButton'
+                          className='absolute m-0 p-0 box-border bottom-0 -right-14 w-14 h-20 object-cover border-2 border-purple-300 rounded-[10px] duration-200 group-hover/list:-right-0'
+                          src={photo}
+                          alt='Friend Image'
+                        />
+                      ) : (
+                        <span className='absolute m-0 p-0 box-border bottom-0 -right-14 w-14 h-20 text-center flex flex-col justify-center font-medium text-2xl border-2 bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 border-purple-300 rounded-[10px] text-zinc-100 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 duration-200 group-hover/list:-right-0 uppercase min-w-0'>
+                          <div className=''>{list.userName.slice(0, 2)}</div>
+                        </span>
+                      )}
                     </div>
                   </Fragment>
                 );

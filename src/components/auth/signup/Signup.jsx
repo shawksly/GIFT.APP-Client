@@ -114,17 +114,17 @@ function Signup({ updateUser, setNewUserStatus }) {
             className=' bg-slate-600 text-white border-0 rounded-md p-2 mb-4 focus:bg-slate-500 focus:outline-blue-200 transition ease-in-out duration-150 place-content-baseline placeholder-gray-300'
             type='password'
           />
-          {/* <label
-            class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+          <label
+            className='block mb-2 text-sm font-medium text-zinc-100 dark:text-white'
             for='file_input'
           >
-            Upload file
+            Upload profile photo
           </label>
           <input
             onChange={(e) => {
               setImage(e.target.files[0]);
             }}
-            class='block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400'
+            className='block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400'
             id='file_input'
             type='file'
           ></input>
@@ -133,7 +133,7 @@ function Signup({ updateUser, setNewUserStatus }) {
             type='submit'
           >
             Submit
-          </button> */}
+          </button>
           <p className='text-white mt-4 text-center'>
             Already Have an Account?
             <a
