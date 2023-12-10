@@ -16,13 +16,14 @@ import FriendsList from '../friendsList/FriendsList'
 import ItemEditModal from '../itemModal/ItemEditModal';
 import ListToggle from '../listToggle/ListToggle';
 
-function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
+function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo, friends }) {
   const [listDisplay, setListDisplay] = useState(true);
   const [lists, setLists] = useState([]);
   const [gifts, setGifts] = useState([]);
   const [giftsId, setGiftsId] = useState('');
   const [item, setItem] = useState([]);
   const [itemId, setItemId] = useState([]);
+  const [currentListId, setCurrentListId] = useState('');
 
   const [displayFriends, setDisplayFriends] = useState(false);
 
@@ -39,6 +40,13 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
     buttonRef: buttonRefItem,
     isComponentVisible: isComponentVisibleItem,
     setIsComponentVisible: setIsComponentVisibleItem,
+  } = useComponentVisible(false);
+
+  const {
+    dropDownRef: dropdownRefEditList,
+    buttonRef: buttonRefEditList,
+    isComponentVisible: isComponentVisibleEditList,
+    setIsComponentVisible: setIsComponentVisibleEditList,
   } = useComponentVisible(false);
 
   function chooseDisplayedGifts(giftList) {
@@ -162,16 +170,19 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
               lists={lists}
               fetchFriendsLists={fetchFriendsLists}
               setGiftsId={setGiftsId}
+              setCurrentListId={setCurrentListId}
               name={name}
               photo={photo}
+              friends={friends}
               displayFriends={displayFriends}
               setDisplayFriends={setDisplayFriends}
+              setIsComponentVisibleEditList={setIsComponentVisibleEditList}
+              buttonRefEditList={buttonRefEditList}
             />
           ) : (
             <ItemList
               key='gifts'
               token={token}
-              setListDisplay={setListDisplay}
               gifts={gifts}
               giftsId={giftsId}
               setItem={setItem}
@@ -186,10 +197,16 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
       <BottomBar
         token={token}
         fetchLists={fetchLists}
+        fetchFriendsLists={fetchFriendsLists}
         fetchGifts={fetchGifts}
         setListDisplay={setListDisplay}
         listDisplay={listDisplay}
         giftsId={giftsId}
+        currentListId={currentListId}
+        isComponentVisibleEditList={isComponentVisibleEditList}
+        setIsComponentVisibleEditList={setIsComponentVisibleEditList}
+        dropdownRefEditList={dropdownRefEditList}
+        displayFriends={displayFriends}
         clearUser={clearUser}
         name={name}
         mail={mail}
