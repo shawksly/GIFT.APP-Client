@@ -45,12 +45,12 @@ function ItemList({
           <h3 className='mx-0 mt-0 mb-[25px] px-0 pb-0 pt-2 box-border font-poppins text-white'>
             ITEM.LISTS
           </h3>
-          {!gifts.getGifts ? (
+          {!gifts ? (
             <h4 className='font-semibold  text-white'>
               Please add a new gift...
             </h4>
           ) : (
-            gifts.getGifts?.map((gift, index) => (
+            gifts?.map((gift, index) => (
               <div
                 key={gift._id}
                 ref={buttonRefItem}

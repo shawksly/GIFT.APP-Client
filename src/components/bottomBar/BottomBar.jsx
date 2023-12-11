@@ -1,24 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import AddItem from '../addItem/AddItem';
 import AddList from '../addList/AddList';
 import ListEditModal from '../listEditModal/ListEditModal';
+import FriendsList from '../friendsList/FriendsList';
 import useComponentVisible from '../../utils/useComponentVisible';
 
 function BottomBar({
   token,
   fetchLists,
+  fetchFriends,
   fetchFriendsLists,
   fetchGifts,
   setListDisplay,
   listDisplay,
+  setIsComponentVisibleItem,
   giftsId,
   currentListId,
   isComponentVisibleEditList,
   setIsComponentVisibleEditList,
   dropdownRefEditList,
   displayFriends,
+  friendRequestsList,
   clearUser,
   name,
   mail,
@@ -37,6 +41,13 @@ function BottomBar({
     isComponentVisible: isComponentVisibleUser,
     setIsComponentVisible: setIsComponentVisibleUser,
   } = useComponentVisible(false);
+  
+  const {
+    dropDownRef: dropdownRefFriendsList,
+    buttonRef: buttonRefFriendsList,
+    isComponentVisible: isComponentVisibleFriendsList,
+    setIsComponentVisible: setIsComponentVisibleFriendsList,
+  } = useComponentVisible(false);
 
   const navigate = useNavigate();
 
@@ -45,6 +56,7 @@ function BottomBar({
   const handleEditProfileClick = () => {
     setProfileEditingVisible(!isProfileEditingVisible);
   };
+  
 
   function logout() {
     clearUser();
@@ -58,11 +70,15 @@ function BottomBar({
           {isComponentVisibleEditList && (
             <ListEditModal token={token} currentListId={currentListId} fetchLists={fetchLists} fetchFriendsLists={fetchFriendsLists} displayFriends={displayFriends} dropdownRefEditList={dropdownRefEditList} setIsComponentVisibleEditList={setIsComponentVisibleEditList} />
           )}
+          {isComponentVisibleFriendsList && (
+            <FriendsList token={token} fetchFriends={fetchFriends} friendRequestsList={friendRequestsList} dropdownRefFriendsList={dropdownRefFriendsList} setIsComponentVisibleFriendsList={setIsComponentVisibleFriendsList} />
+          )}
         </div>
         <div className='grid h-full max-w-lg grid-cols-5 mx-auto'>
           <div
             onClick={() => {
               setListDisplay(true);
+              setIsComponentVisibleItem(false);
             }}
             className='inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
@@ -90,6 +106,10 @@ function BottomBar({
             data-tooltip-target='tooltip-wallet'
             type='button'
             className='inline-flex flex-col items-center justify-center px-5 hover:bg-purple-900 dark:hover:bg-gray-800 group'
+            ref={buttonRefFriendsList}
+            onClick={() => {
+              setIsComponentVisibleFriendsList(true);
+            }}
           >
             {/* // TODO fix height and width?? */}
             <svg
