@@ -25,6 +25,7 @@ function ListGroup({
   setDisplayFriends,
   setIsComponentVisibleEditList,
   buttonRefEditList,
+  setIsComponentVisibleFriendsList,
 }) {
   useEffect(() => {
     if (!displayFriends) {
@@ -74,7 +75,7 @@ function ListGroup({
             setDisplayFriends={setDisplayFriends}
           />
           <div className='relative m-0 box-border font-poppins min-w-[350px] max-w-[350px] min-h-[400px] bg-[#ffffff1a] bg-opacity-25 rounded-[10px] z-10 p-5'>
-            {displayFriends && <Avatars token={token} fetchFriends={fetchFriends} friendsList={friendsList} />}
+            {displayFriends && <Avatars token={token} fetchFriends={fetchFriends} friendsList={friendsList} setIsComponentVisibleFriendsList={setIsComponentVisibleFriendsList} />}
             <h3 className='mx-0 mt-0 mb-[25px] px-0 pb-0 pt-2 box-border font-poppins text-white'>
               {!displayFriends ? 'GIFT.LISTS' : `FRIENDS.LISTS`}
             </h3>

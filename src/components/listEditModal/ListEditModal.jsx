@@ -168,7 +168,7 @@ function ItemEditModal({
                   strokeWidth='2'
                   d='M5 13V1m0 0L1 5m4-4 4 4'
                 />
-              </svg>  
+              </svg>
               Update List
             </button>
           </form>

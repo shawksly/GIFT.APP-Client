@@ -52,6 +52,13 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
     setIsComponentVisible: setIsComponentVisibleEditList,
   } = useComponentVisible(false);
 
+  const {
+    dropDownRef: dropdownRefFriendsList,
+    buttonRef: buttonRefFriendsList,
+    isComponentVisible: isComponentVisibleFriendsList,
+    setIsComponentVisible: setIsComponentVisibleFriendsList,
+  } = useComponentVisible(false);
+
   async function fetchLists() {
     if (token && userId)
       try {
@@ -74,6 +81,8 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
             setLists([]);
             console.log('No Lists Yet');
           }
+        } else {
+          setLists([]);
         }
       } catch (error) {
         console.log(error);
@@ -109,6 +118,9 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
             setFriendRequestsList([]);
             console.log('No Friend Requests Yet');
           }
+        } else {
+          setFriendsList([]);
+          setFriendRequestsList([]);
         }
       } catch (error) {
         console.log(error);
@@ -139,6 +151,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
             console.log('No Friends With Lists');
           }
         } else {
+          setLists([]);
           setDisplayFriends(false);
         }
       } catch (error) {
@@ -168,6 +181,8 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
             setGifts([]);
             console.log('Gift List Empty');
           }
+        } else {
+          setGifts([]);
         }
       } catch (error) {
         console.log(error);
@@ -219,6 +234,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
               setDisplayFriends={setDisplayFriends}
               setIsComponentVisibleEditList={setIsComponentVisibleEditList}
               buttonRefEditList={buttonRefEditList}
+              setIsComponentVisibleFriendsList={setIsComponentVisibleFriendsList}
             />
           ) : (
             <ItemList
@@ -243,13 +259,19 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
         fetchGifts={fetchGifts}
         setListDisplay={setListDisplay}
         listDisplay={listDisplay}
+        setDisplayFriends={setDisplayFriends}
         setIsComponentVisibleItem={setIsComponentVisibleItem}
         giftsId={giftsId}
         currentListId={currentListId}
         isComponentVisibleEditList={isComponentVisibleEditList}
         setIsComponentVisibleEditList={setIsComponentVisibleEditList}
         dropdownRefEditList={dropdownRefEditList}
+        dropdownRefFriendsList={dropdownRefFriendsList}
+        buttonRefFriendsList={buttonRefFriendsList}
+        isComponentVisibleFriendsList={isComponentVisibleFriendsList}
+        setIsComponentVisibleFriendsList={setIsComponentVisibleFriendsList}
         displayFriends={displayFriends}
+        friendsList={friendsList}
         friendRequestsList={friendRequestsList}
         clearUser={clearUser}
         name={name}
