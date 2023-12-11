@@ -33,8 +33,6 @@ function App() {
   const [name, setName] = useState('');
   const [mail, setMail] = useState('');
   const [photo, setPhoto] = useState('');
-  const [friends, setFriends] = useState('');
-  const [friendRequests, setFriendRequests] = useState('');
 
   // Initialize the isLoggedIn state as false (user is not logged in)
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -48,10 +46,8 @@ function App() {
     setName(localStorage.name);
     setMail(localStorage.mail);
     setPhoto(localStorage.photo);
-    setFriends(localStorage.friends);
-    setFriendRequests(localStorage.friendRequests);
     console.log('TOKEN:', localStorage.token);
-    console.log('Initialized: ', userId, name, mail, photo, friends, friendRequests);
+    console.log('Initialized: ', userId, name, mail, photo);
 
     // Set the isLoggedIn state based on the presence of the token
     // setIsLoggedIn(!!localStorage.token);
@@ -72,10 +68,6 @@ function App() {
     localStorage.mail = newMail;
     setPhoto(newPhoto);
     localStorage.photo = newPhoto;
-    setFriends(newFriends);
-    localStorage.friends = newFriends;
-    setFriendRequests(newFriendRequests);
-    localStorage.friendRequests = newFriendRequests;
     console.log('User Updated: ', newId, newName, newMail, newPhoto);
 
     // Set the isLoggedIn state to true when a token is updated (user is logged in)
@@ -94,10 +86,6 @@ function App() {
     localStorage.removeItem('mail');
     setPhoto('');
     localStorage.removeItem('photo');
-    setFriends('');
-    localStorage.removeItem('friends');
-    setFriendRequests('');
-    localStorage.removeItem('friendRequests');
 
     // Set the isLoggedIn state to false when the user logs out
     // setIsLoggedIn(false);
@@ -120,7 +108,6 @@ function App() {
               name={name}
               mail={mail}
               photo={photo}
-              friends={friends}
             />
           }
         />
@@ -138,8 +125,7 @@ function App() {
               userId={userId}
               name={name}
               mail={mail}
-              photo={photo}
-              friends={friends} />} />
+              photo={photo} />} />
 
 
       </Routes>
