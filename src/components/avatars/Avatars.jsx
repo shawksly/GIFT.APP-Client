@@ -10,7 +10,7 @@ function Avatars({ token, fetchFriends, friendsList }) {
     <div className='absolute flex -space-x-3 rtl:space-x-reverse -top-3 right-1'>
       {!friendsList[0]
         ? null
-        : friendsList?.map((friend, i) => {
+        : friendsList?.toReversed().map((friend, i) => {
             return i < 4 ? (
               friend.img ? (
                 <img
