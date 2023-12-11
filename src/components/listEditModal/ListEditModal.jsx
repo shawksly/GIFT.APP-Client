@@ -59,14 +59,14 @@ function ItemEditModal({
       ref={dropdownRefEditList}
     >
       <div className='relative p-4 w-full max-w-md max-h-full'>
-        <div className='relative bg-zinc-100 rounded-lg shadow dark:bg-gray-700'>
+        <div className='relative bg-gradient-to-r from-purple-200 via-zinc-100 to-blue-200 rounded-lg shadow dark:bg-gray-700'>
           <div className='flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600'>
             <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
               Update List
             </h3>
             <button
               type='button'
-              className='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white'
+              className='text-gray-400 bg-gradient-to-r from-slate-900  to-slate-900 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white'
               onClick={() => {
                 setIsComponentVisibleEditList(false);
               }}
@@ -152,7 +152,7 @@ function ItemEditModal({
             </div>
             <button
               type='submit'
-              className='text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+              className='text-white inline-flex items-center bg-slate-900 hover:bg-purple-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
               onClick={updateList}
             >
               <svg
@@ -168,7 +168,7 @@ function ItemEditModal({
                   strokeWidth='2'
                   d='M5 13V1m0 0L1 5m4-4 4 4'
                 />
-              </svg>
+              </svg>  
               Update List
             </button>
           </form>

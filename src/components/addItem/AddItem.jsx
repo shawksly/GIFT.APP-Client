@@ -86,7 +86,7 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
   }
 
   return (
-    <div className=' box-border h-auto w-auto p-4 border-4 bg-gradient-to-r from-slate-500 to-purple-200 bg-opacity-1/8 backdrop-blur-30'>
+    <div className=' font-poppins box-border h-auto w-auto p-4 border-4 bg-gradient-to-b from-slate-500 to-purple-200 bg-opacity-1/8 backdrop-blur-30'>
       <div>
         <p className='ml-20 text-gray-700 font-poppins'>Add New Gift</p>
 
@@ -166,7 +166,7 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
             htmlFor='small-input'
             className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
           >
-            Emoji<br/>(enter an emoji, or couple characters to represent your list)
+            Emoji<br/> Select an emoji, or a few characters to represent your list!)
           </label>
           <input
             type='text'

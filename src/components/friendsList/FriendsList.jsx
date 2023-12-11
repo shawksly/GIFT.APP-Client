@@ -1,6 +1,7 @@
 import React from 'react'
 
 function FriendsList() {
+    
   return (
     <div> 
 
@@ -27,6 +28,7 @@ function FriendsList() {
                                 email@ME.com
                             </p>
                         </div>
+                        
                         <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
                             Friend Request
                         </div>
@@ -38,8 +40,14 @@ function FriendsList() {
 </div>
 
 
+
                     </div>
                     <button className= 'absolute left-1/4 border border-box border-blue-400 border-4 bg-slate-400 text-white rounded rounded-10' > Accept </button>
+                    <div>
+
+    <button className= ' absolute top 2 left 2 border border-slate-200 bg-slate-600 text-zinc-100 rounded rounded-10' > Add new Friends </button>
+
+</div>
                 </li>
             </ul>
        </div>
