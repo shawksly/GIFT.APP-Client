@@ -123,13 +123,16 @@ function BottomBar({
             </svg>
 
             <span className='sr-only'>Wallet</span>
+            <div className='absolute top-3 right-150 translate-x-[50%] -mt-2 -mr-2 inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full'>
+              +6
+            </div>
           </button>
           <div
             id='tooltip-wallet'
             role='tooltip'
             className='absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700'
           >
-            Wallet
+            Friends
             <div className='tooltip-arrow' data-popper-arrow></div>
           </div>
           <div
@@ -160,6 +163,8 @@ function BottomBar({
                 />
               </svg>
               <span className='sr-only'>New item</span>
+              
+         
             </button>
           </div>
           <div
@@ -236,22 +241,14 @@ function BottomBar({
             type='button'
             className='relative inline-flex flex-col items-center justify-center px-5 hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
-            <svg
-              className='w-6 h-6 text-zinc-100 dark:text-white'
-              aria-hidden='true'
-              xmlns='http://www.w3.org/2000/svg'
-              fill='currentColor'
-              viewBox='0 0 20 20'
-            >
-              <path d='M15.133 10.632v-1.8a5.407 5.407 0 0 0-4.154-5.262.955.955 0 0 0 .021-.106V1.1a1 1 0 0 0-2 0v2.364a.944.944 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C4.867 13.018 3 13.614 3 14.807 3 15.4 3 16 3.538 16h12.924C17 16 17 15.4 17 14.807c0-1.193-1.867-1.789-1.867-4.175Zm-13.267-.8a1 1 0 0 1-1-1 9.424 9.424 0 0 1 2.517-6.39A1.001 1.001 0 1 1 4.854 3.8a7.431 7.431 0 0 0-1.988 5.037 1 1 0 0 1-1 .995Zm16.268 0a1 1 0 0 1-1-1A7.431 7.431 0 0 0 15.146 3.8a1 1 0 0 1 1.471-1.354 9.425 9.425 0 0 1 2.517 6.391 1 1 0 0 1-1 .995ZM6.823 17a3.453 3.453 0 0 0 6.354 0H6.823Z' />
-            </svg>
+        <svg class="w-6 h-6 text-zinc-100 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 4H19M7.75 4a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 4h2.25m13.5 6H19m-2.25 0a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 10h11.25m-4.5 6H19M7.75 16a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 16h2.25"/>
+  </svg>
 
-            <span className='sr-only'>Notifications</span>
+            <span className='sr-only'> Notifications</span>
 
-            <div className='absolute top-3 right-3 -mt-2 -mr-2 inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full'>
-              20
-            </div>
           </button>
+          
           <div
             id='tooltip-settings'
             role='tooltip'

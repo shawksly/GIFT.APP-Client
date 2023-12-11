@@ -38,7 +38,7 @@ function AddList({ token, fetchLists, setIsComponentVisibleAdd }) {
   }
 
   return (
-    <div className='box-border h-auto w-auto p-4 border-4 bg-gradient-to-r from-slate-500 to-purple-200 bg-opacity-1/8 backdrop-blur-30'>
+    <div className=' font-poppins box-border h-auto w-auto p-4 border-4 bg-gradient-to-b from-slate-500 to-purple-200 bg-opacity-1/8 backdrop-blur-30'>
       <p className='ml-20 text-gray-700 font-poppins'>Add New List</p>
       <div>
         <div className='mb-6'>
@@ -80,7 +80,7 @@ function AddList({ token, fetchLists, setIsComponentVisibleAdd }) {
           >
             Emoji
             <br />
-            (enter an emoji, or couple characters to represent your list)
+            (Select an emoji, or a few characters to represent your list!)
           </label>
           <input
             type='text'
@@ -99,7 +99,7 @@ function AddList({ token, fetchLists, setIsComponentVisibleAdd }) {
         type='submit'
         onClick={addItemInput}
       >
-        Add Item
+        Add List
       </button>
       {/* This creates the arrow pointing to the button */}
       <div className='content-none absolute top-full left-1/2 -ml-3 border-[0.75rem] border-solid border-gray-200 dark:border-gray-700 border-x-transparent border-b-transparent'></div>
