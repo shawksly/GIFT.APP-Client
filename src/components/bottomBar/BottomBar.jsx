@@ -15,13 +15,19 @@ function BottomBar({
   fetchGifts,
   setListDisplay,
   listDisplay,
+  setDisplayFriends,
   setIsComponentVisibleItem,
   giftsId,
   currentListId,
   isComponentVisibleEditList,
   setIsComponentVisibleEditList,
   dropdownRefEditList,
+  dropdownRefFriendsList,
+  buttonRefFriendsList,
+  isComponentVisibleFriendsList,
+  setIsComponentVisibleFriendsList,
   displayFriends,
+  friendsList,
   friendRequestsList,
   clearUser,
   name,
@@ -41,13 +47,6 @@ function BottomBar({
     isComponentVisible: isComponentVisibleUser,
     setIsComponentVisible: setIsComponentVisibleUser,
   } = useComponentVisible(false);
-  
-  const {
-    dropDownRef: dropdownRefFriendsList,
-    buttonRef: buttonRefFriendsList,
-    isComponentVisible: isComponentVisibleFriendsList,
-    setIsComponentVisible: setIsComponentVisibleFriendsList,
-  } = useComponentVisible(false);
 
   const navigate = useNavigate();
 
@@ -56,7 +55,6 @@ function BottomBar({
   const handleEditProfileClick = () => {
     setProfileEditingVisible(!isProfileEditingVisible);
   };
-  
 
   function logout() {
     clearUser();
@@ -68,10 +66,24 @@ function BottomBar({
       <div className='fixed z-50 w-[calc(100vw-6px)] h-16 max-w-lg -translate-x-1/2 bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 border-2 border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600 justify-center items-center '>
         <div className='relative'>
           {isComponentVisibleEditList && (
-            <ListEditModal token={token} currentListId={currentListId} fetchLists={fetchLists} fetchFriendsLists={fetchFriendsLists} displayFriends={displayFriends} dropdownRefEditList={dropdownRefEditList} setIsComponentVisibleEditList={setIsComponentVisibleEditList} />
+            <ListEditModal
+              token={token}
+              currentListId={currentListId}
+              fetchLists={fetchLists}
+              fetchFriendsLists={fetchFriendsLists}
+              displayFriends={displayFriends}
+              dropdownRefEditList={dropdownRefEditList}
+              setIsComponentVisibleEditList={setIsComponentVisibleEditList}
+            />
           )}
           {isComponentVisibleFriendsList && (
-            <FriendsList token={token} fetchFriends={fetchFriends} friendRequestsList={friendRequestsList} dropdownRefFriendsList={dropdownRefFriendsList} setIsComponentVisibleFriendsList={setIsComponentVisibleFriendsList} />
+            <FriendsList
+              token={token}
+              fetchFriends={fetchFriends}
+              friendsList={friendsList}
+              friendRequestsList={friendRequestsList}
+              dropdownRefFriendsList={dropdownRefFriendsList}
+            />
           )}
         </div>
         <div className='grid h-full max-w-lg grid-cols-5 mx-auto'>
@@ -79,6 +91,7 @@ function BottomBar({
             onClick={() => {
               setListDisplay(true);
               setIsComponentVisibleItem(false);
+              setDisplayFriends(false);
             }}
             className='inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
@@ -163,8 +176,6 @@ function BottomBar({
                 />
               </svg>
               <span className='sr-only'>New item</span>
-              
-         
             </button>
           </div>
           <div
@@ -241,14 +252,25 @@ function BottomBar({
             type='button'
             className='relative inline-flex flex-col items-center justify-center px-5 hover:bg-purple-900 dark:hover:bg-gray-800 group'
           >
-        <svg class="w-6 h-6 text-zinc-100 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 4H19M7.75 4a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 4h2.25m13.5 6H19m-2.25 0a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 10h11.25m-4.5 6H19M7.75 16a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 16h2.25"/>
-  </svg>
+            <svg
+              className='w-6 h-6 text-zinc-100 dark:text-white'
+              aria-hidden='true'
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 20 20'
+            >
+              <path
+                stroke='currentColor'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M7.75 4H19M7.75 4a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 4h2.25m13.5 6H19m-2.25 0a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 10h11.25m-4.5 6H19M7.75 16a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 16h2.25'
+              />
+            </svg>
 
             <span className='sr-only'> Notifications</span>
-
           </button>
-          
+
           <div
             id='tooltip-settings'
             role='tooltip'
