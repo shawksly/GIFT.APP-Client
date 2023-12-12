@@ -20,7 +20,7 @@ function ItemEditModal({
     const body = {};
     if (title.length > 0) body.title = title;
     if (description.length > 0) body.description = description;
-    if (emoji.length > 0) emoji.title = emoji;
+    if (emoji.length > 0) body.emoji = emoji;
 
     try {
       let response = await fetch(
@@ -62,7 +62,7 @@ function ItemEditModal({
         <div className='relative bg-gradient-to-r from-purple-200 via-zinc-100 to-blue-200 rounded-lg shadow dark:bg-gray-700'>
           <div className='flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600'>
             <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-              Update List
+              Gift.List.Edit
             </h3>
             <button
               type='button'

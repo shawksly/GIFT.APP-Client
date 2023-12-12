@@ -65,7 +65,7 @@ function ItemList({
                 className='mx-0 mb-0 mt-2.5 p=10 box-border font-poppins relative overflow-hidden flex justify-items-stretch justify-between p-2.5 gap-2.5 rounded-[10px] bg-[#0000001a] cursor-pointer transition-all duration-200 ease-linear hover:bg-zinc-100 hover:scale-[1.03] hover:translate-x-[6px] hover:translate-y-[-3px] group/list'
               >
                 <div className='flex grow flex-col relative min-w-0 m-0 px-0 pb-0 pt-1 box-border font-poppins text-white'>
-                  <h2 className='absolute right-[-65px] top-1/2 -translate-y-1/2 text-[#00aeff] duration-200 text-[2em] group-hover/list:right-6'>
+                  <h2 className='absolute right-[-75px] top-1/2 -translate-y-1/2 text-[#00aeff] duration-200 text-[2em] group-hover/list:right-6'>
                     <small className='font-medium opacity-25'>#</small>{' '}
                     {index + 1}
                   </h2>
@@ -80,10 +80,10 @@ function ItemList({
                     </div>
                   </div>
                   <p className='text-xs duration-200 group-hover/list:text-[#222] lowercase overflow-hidden text-ellipsis whitespace-nowrap'>
-                    {gift.description}
+                    {gift.description ? gift.description : <br/>}
                   </p>
                 </div>
-                <div className='m-0 box-border font-poppins text-white absolute -bottom-6 right-14 flex flex-row duration-200 group-hover/list:bottom-0'>
+                {/* <div className='m-0 box-border font-poppins text-white absolute -bottom-6 right-14 flex flex-row duration-200 group-hover/list:bottom-0'>
                   <button
                     className='w-14 bg-blue-500 rounded-5 grow '
                     // onClick={() => navigate('/ItemList')}
@@ -93,7 +93,7 @@ function ItemList({
                   <button className='w-14 bg-red-500 rounded-5 grow mr-1'>
                     Delete
                   </button>
-                </div>
+                </div> */}
               </div>
             ))
           )}

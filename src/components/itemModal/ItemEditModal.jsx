@@ -48,7 +48,7 @@ function ItemEditModal() {
             <div className='grid gap-4 mb-4 grid-cols-2'>
               <div className='col-span-2'>
                 <label
-                  for='name'
+                  htmlFor='name'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Name
@@ -64,7 +64,7 @@ function ItemEditModal() {
               </div>
               <div className='col-span-2 sm:col-span-1'>
                 <label
-                  for='price'
+                  htmlFor='price'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Price
@@ -82,7 +82,7 @@ function ItemEditModal() {
                 <div>
                   <label
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                    for='file_input'
+                    htmlFor='file_input'
                   >
                     Upload Image
                   </label>
@@ -95,7 +95,7 @@ function ItemEditModal() {
               </div>
               <div className='col-span-2'>
                 <label
-                  for='description'
+                  htmlFor='description'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Product Description

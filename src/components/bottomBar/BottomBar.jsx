@@ -6,9 +6,11 @@ import AddList from '../addList/AddList';
 import ListEditModal from '../listEditModal/ListEditModal';
 import FriendsList from '../friendsList/FriendsList';
 import useComponentVisible from '../../utils/useComponentVisible';
+import UserProfileModal from '../userProfileModal/UserProfileModal';
 
 function BottomBar({
   token,
+  updateUser,
   fetchLists,
   fetchFriends,
   fetchFriendsLists,
@@ -30,6 +32,7 @@ function BottomBar({
   friendsList,
   friendRequestsList,
   clearUser,
+  userId,
   name,
   mail,
   photo,
@@ -48,6 +51,13 @@ function BottomBar({
     setIsComponentVisible: setIsComponentVisibleUser,
   } = useComponentVisible(false);
 
+  const {
+    dropDownRef: dropdownRefEditUser,
+    buttonRef: buttonRefEditUser,
+    isComponentVisible: isComponentVisibleEditUser,
+    setIsComponentVisible: setIsComponentVisibleEditUser,
+  } = useComponentVisible(false);
+
   const navigate = useNavigate();
 
   const [isProfileEditingVisible, setProfileEditingVisible] = useState(false);
@@ -55,6 +65,10 @@ function BottomBar({
   const handleEditProfileClick = () => {
     setProfileEditingVisible(!isProfileEditingVisible);
   };
+
+  useEffect(() => {
+    fetchFriends();
+  }, [token, friendRequestsList.length, friendsList.length]);
 
   function logout() {
     clearUser();
@@ -83,6 +97,17 @@ function BottomBar({
               friendsList={friendsList}
               friendRequestsList={friendRequestsList}
               dropdownRefFriendsList={dropdownRefFriendsList}
+            />
+          )}
+          {isComponentVisibleEditUser && (
+            <UserProfileModal
+              token={token}
+              updateUser={updateUser}
+              userId={userId}
+              name={name}
+              photo={photo}
+              dropdownRefEditUser={dropdownRefEditUser}
+              setIsComponentVisibleEditUser={setIsComponentVisibleEditUser}
             />
           )}
         </div>
@@ -124,7 +149,6 @@ function BottomBar({
               setIsComponentVisibleFriendsList(true);
             }}
           >
-            {/* // TODO fix height and width?? */}
             <svg
               className='w-6 h-6 text-zinc-100 dark:text-white'
               aria-hidden='true'
@@ -136,9 +160,11 @@ function BottomBar({
             </svg>
 
             <span className='sr-only'>Wallet</span>
-            <div className='absolute top-3 right-150 translate-x-[50%] -mt-2 -mr-2 inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full'>
-              +6
-            </div>
+            {friendRequestsList.length > 0 && (
+              <div className='absolute top-3 right-150 translate-x-[50%] -mt-2 -mr-2 inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full'>
+                +{friendRequestsList.length}
+              </div>
+            )}
           </button>
           <div
             id='tooltip-wallet'
@@ -248,9 +274,13 @@ function BottomBar({
           </AnimatePresence>
 
           <button
+            ref={buttonRefEditUser}
             data-tooltip-target='tooltip-settings'
             type='button'
             className='relative inline-flex flex-col items-center justify-center px-5 hover:bg-purple-900 dark:hover:bg-gray-800 group'
+            onClick={() => {
+              setIsComponentVisibleEditUser((prev) => !prev);
+            }}
           >
             <svg
               className='w-6 h-6 text-zinc-100 dark:text-white'
@@ -442,6 +472,14 @@ function BottomBar({
                   )}
                   <div></div>
                 </div> */}
+                <div className='py-1' role='button' onClick={() => {
+                  setIsComponentVisibleUser(false);
+                  setIsComponentVisibleEditUser(true);
+                }}>
+                  <a className='block px-4 py-2 text-sm text-gray-700 hover:text-gray-100 hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'>
+                    Edit Profile
+                  </a>
+                </div>
                 <div className='py-1' role='button' onClick={logout}>
                   <a className='block px-4 py-2 text-sm text-gray-700 hover:text-gray-100 hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'>
                     Sign out

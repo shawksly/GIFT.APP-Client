@@ -16,7 +16,7 @@ import FriendsList from '../friendsList/FriendsList';
 import ItemEditModal from '../itemModal/ItemEditModal';
 import ListToggle from '../listToggle/ListToggle';
 
-function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
+function Home({ isLoggedIn, token, updateUser, clearUser, userId, name, mail, photo }) {
   const [listDisplay, setListDisplay] = useState(true);
   const [lists, setLists] = useState([]);
   const [gifts, setGifts] = useState([]);
@@ -253,6 +253,7 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
       </div>
       <BottomBar
         token={token}
+        updateUser={updateUser}
         fetchLists={fetchLists}
         fetchFriends={fetchFriends}
         fetchFriendsLists={fetchFriendsLists}
@@ -274,10 +275,12 @@ function Home({ isLoggedIn, token, clearUser, userId, name, mail, photo }) {
         friendsList={friendsList}
         friendRequestsList={friendRequestsList}
         clearUser={clearUser}
+        userId={userId}
         name={name}
         mail={mail}
         photo={photo}
       />
+      
     </>
   );
 }

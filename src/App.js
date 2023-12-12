@@ -57,7 +57,7 @@ function App() {
     console.log('IS LOGGED IN: ', isLoggedIn);
   }
 
-  function updateUser(newToken, newId, newName, newMail, newPhoto, newFriends, newFriendRequests) {
+  function updateUser(newToken, newId, newName, newMail, newPhoto) {
     setToken(newToken);
     localStorage.token = newToken;
     setUserId(newId);
@@ -103,6 +103,7 @@ function App() {
             <Home
               isLoggedIn={isLoggedIn}
               token={token}
+              updateUser={updateUser}
               clearUser={clearUser}
               userId={userId}
               name={name}
@@ -121,6 +122,7 @@ function App() {
 {/* <Route path='/list2' element={<List />} /> */}
 <Route path='/home' element={<Home isLoggedIn={isLoggedIn}
               token={token}
+              updateUser={updateUser}
               clearUser={clearUser}
               userId={userId}
               name={name}
