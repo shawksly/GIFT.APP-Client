@@ -10,10 +10,6 @@ function FriendsList({
   // const [friendEmail, setFriendEmail] = useState('')
   const friendEmail = useRef('');
 
-  useEffect(() => {
-    fetchFriends();
-  }, [token, friendRequestsList.length, friendsList.length]);
-
   async function fetchFriendRequest() {
     if (token && friendEmail.current)
       try {
@@ -73,12 +69,12 @@ function FriendsList({
 
   return (
     <div
-      className='absolute w-96 max-w-md max-h-[40vh] overflow-y-auto p-4 bg-gradient-to-r from-white via-slate-400 to-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 left-1/2 -translate-x-1/2 bottom-3'
+      className='absolute w-96 max-w-md max-h-[40vh] overflow-y-auto p-4 bg-gradient-to-r from-white via-slate-400 to-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 left-1/2 -translate-x-1/2 bottom-3'
       ref={dropdownRefFriendsList}
     >
       <div className='flex items-center justify-between mb-4'>
         <h5 className='text-xl me-auto font-bold leading-none text-gray-900 dark:text-white'>
-          Gift.User
+          Gift.Friends
         </h5>
         <div className='flex flex-col items-center justify-items-center'>
           <input

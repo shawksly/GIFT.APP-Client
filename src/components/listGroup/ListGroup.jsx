@@ -1,5 +1,4 @@
 import { useEffect, Fragment } from 'react';
-import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import ItemList from '../itemList/ItemList';
 import TwoBoxes from '../twoBoxes/TwoBoxes';
@@ -34,8 +33,6 @@ function ListGroup({
       fetchFriendsLists();
     }
   }, [token, displayFriends]);
-
-  const navigate = useNavigate();
 
   return (
     <motion.div
@@ -134,7 +131,7 @@ function ListGroup({
                         <img
                           id='avatarButton'
                           className='absolute m-0 p-0 box-border bottom-0 -right-14 w-14 h-20 object-cover border-2 border-purple-300 rounded-[10px] duration-200 group-hover/list:-right-0'
-                          src={photo}
+                          src={list.img}
                           alt='Friend Image'
                         />
                       ) : (
