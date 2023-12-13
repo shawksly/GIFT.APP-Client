@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import useComponentVisible from '../../utils/useComponentVisible';
 
 function ItemEditModal({
@@ -51,8 +52,27 @@ function ItemEditModal({
   }
 
   return (
-    <div
-      className='absolute overflow-y-auto overflow-x-hidden z-50 w-96 justify-center items-center -left-2 -bottom-1'
+    <motion.div
+      initial={{
+        left: '-50vw',
+        x: '-50%',
+        bottom: '-0.25rem',
+      }}
+      animate={{
+        left: '50%',
+        x: '-50%',
+        bottom: '-0.25rem',
+      }}
+      exit={{
+        left: '-50vw',
+        x: '-50%',
+        bottom: '-0.25rem',
+      }}
+      transition={{
+        duration: 0.2,
+        ease: 'easeIn',
+      }}
+      className='absolute overflow-y-auto overflow-x-hidden z-50 w-96 justify-center items-center'
       id='crud-modal'
       tabIndex='-1'
       aria-hidden='true'
@@ -174,7 +194,7 @@ function ItemEditModal({
           </form>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

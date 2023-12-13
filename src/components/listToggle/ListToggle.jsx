@@ -54,8 +54,16 @@ function ListToggle({ displayFriends, setDisplayFriends }) {
             displayFriends ? 'text-zinc-100' : 'text-zinc-100'
           }`}
         >
-          <h5 className='absolute z-10 left-7'>My.Lists</h5>
-          <h5 className='absolute z-10 right-6'>Friends.Lists</h5>
+          <h5
+            className={`absolute z-10 left-7 ${
+              displayFriends ? 'text-black' : 'text-zinc-100'
+            }`}
+          >
+            My.Lists
+          </h5>
+          <h5 className={`absolute z-10 right-6 text-zinc-100`}>
+            Friends.Lists
+          </h5>
           <motion.div
             // variants={containerVariants}
             // initial='left'

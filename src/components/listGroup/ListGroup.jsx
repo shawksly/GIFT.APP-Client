@@ -17,6 +17,7 @@ function ListGroup({
   fetchFriendsLists,
   friendsList,
   setGiftsId,
+  setCurrentList,
   setCurrentListId,
   name,
   photo,
@@ -87,6 +88,7 @@ function ListGroup({
                     <div className='mx-0 mb-0 mt-2.5 p=10 box-border font-poppins relative overflow-hidden p-2.5 gap-2.5 rounded-[10px] bg-[#0000001a] cursor-pointer transition-all duration-200 ease-linear hover:bg-zinc-100 hover:scale-[1.03] hover:translate-x-[6px] hover:translate-y-[-3px] group/list'>
                       <div
                         onClick={() => {
+                          setCurrentList(list)
                           setGiftsId(list._id);
                           setListDisplay(false);
                         }}
@@ -110,7 +112,6 @@ function ListGroup({
                           </p>
                         </div>
                       </div>
-                      {/* // TODO display alternate */}
                       {!displayFriends ? (
                         <div className='m-0 p-0 box-border font-poppins text-white absolute bottom-0 -right-14 flex flex-col w-14 h-20 duration-200 group-hover/list:-right-0'>
                           <button

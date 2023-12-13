@@ -13,12 +13,12 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
 
   async function addGiftInput(e) {
     e.preventDefault();
-    
+
     // formatting link input into clickable link
     let formattedLink;
     !link.includes('http://') && !link.includes('https://')
-    ? formattedLink = `https://${link}`
-    : formattedLink = link
+      ? (formattedLink = `https://${link}`)
+      : (formattedLink = link);
 
     let urlLink = new URL(formattedLink);
 
@@ -88,7 +88,7 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
   return (
     <div className=' font-poppins box-border h-auto w-auto p-4 border-4 bg-gradient-to-b from-slate-500 to-purple-200 bg-opacity-1/8 backdrop-blur-30'>
       <div>
-        <p className='ml-20 text-gray-700 font-poppins'>Add New Gift</p>
+        <p className='text-center text-gray-700 font-poppins'>Gift.New</p>
 
         <div className='mb-6'>
           <label
@@ -130,17 +130,14 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
           >
             Price
           </label>
-          <div className='flex items-center text-sm font-medium text-gray-900 dark:text-white'>
-            $
           <input
             type='number'
             id='small-input'
-            className='block w-full ms-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            className='block w-full text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             onChange={(e) => {
               setPrice(e.target.value);
             }}
           />
-        </div>
         </div>
         <div>
           <label
@@ -149,24 +146,21 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
           >
             Link
           </label>
-          <div className='flex items-center text-sm font-medium text-gray-900 dark:text-white'>
-            https://
-            <input
-              type='url'
-              id='small-input'
-              className='block w-full ms-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-              onChange={(e) => {
-                setLink(e.target.value);
-              }}
-            />
-          </div>
+          <input
+            type='url'
+            id='small-input'
+            className='block w-full text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            onChange={(e) => {
+              setLink(e.target.value);
+            }}
+          />
         </div>
         <div>
           <label
             htmlFor='small-input'
             className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
           >
-            Emoji<br/> Select an emoji, or a few characters to represent your list!)
+            Emoji
           </label>
           <input
             type='text'
@@ -199,7 +193,7 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
         type='submit'
         onClick={addGiftInput}
       >
-        Add Item
+        Add.Item
       </button>
       {/* This creates the arrow pointing to the button */}
       <div className='content-none absolute top-full left-1/2 -ml-3 border-[0.75rem] border-solid border-gray-200 dark:border-gray-700 border-x-transparent border-b-transparent'></div>

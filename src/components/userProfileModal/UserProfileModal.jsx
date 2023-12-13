@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 function UserProfileModal({
   token,
@@ -88,9 +89,27 @@ function UserProfileModal({
   }
 
   return (
-    <div
-      className='absolute overflow-y-auto overflow-x-hidden left-1/2 -translate-x-1/2 -bottom-1 z-50 justify-center items-center w-full'
-      // className='absolute overflow-y-auto overflow-x-hidden bottom-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full'
+    <motion.div
+      initial={{
+        left: '-50vw',
+        x: '-50%',
+        bottom: '-0.25rem',
+      }}
+      animate={{
+        left: '50%',
+        x: '-50%',
+        bottom: '-0.25rem',
+      }}
+      exit={{
+        left: '-50vw',
+        x: '-50%',
+        bottom: '-0.25rem',
+      }}
+      transition={{
+        duration: 0.2,
+        ease: 'easeIn',
+      }}
+      className='absolute overflow-y-auto overflow-x-hidden z-50 justify-center items-center w-full'
       id='crud-modal'
       tabIndex='-1'
       aria-hidden='true'
@@ -131,18 +150,18 @@ function UserProfileModal({
 
           <form className='p-4 md:p-5'>
             <div className='grid gap-4 mb-4 grid-cols-2'>
-              <div className='col-span-2 sm:col-span-1'>
+              <div className='col-span-2'>
                 <div>
                   <label
-                    htmlFor='name'
+                    htmlFor='username'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Username
                   </label>
                   <input
                     type='text'
-                    name='name'
-                    id='name'
+                    name='username'
+                    id='username'
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                     onChange={(e) => {
                       setUserName(e.target.value);
@@ -153,15 +172,15 @@ function UserProfileModal({
                 </div>
                 <div>
                   <label
-                    htmlFor='name'
+                    htmlFor='email'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Email
                   </label>
                   <input
                     type='text'
-                    name='name'
-                    id='name'
+                    name='email'
+                    id='email'
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -172,15 +191,15 @@ function UserProfileModal({
                 </div>
                 <div>
                   <label
-                    htmlFor='name'
+                    htmlFor='password'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Password
                   </label>
                   <input
                     type='password'
-                    name='name'
-                    id='name'
+                    name='password'
+                    id='password'
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                     onChange={(e) => {
                       setPassword(e.target.value);
@@ -190,7 +209,7 @@ function UserProfileModal({
                   />
                 </div>
               </div>
-              <div className='col-span-2 sm:col-span-1'>
+              <div className='col-span-2'>
                 <label
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   htmlFor='file_input'
@@ -199,14 +218,14 @@ function UserProfileModal({
                 </label>
                 <div className='flex flex-col justify-center items-center'>
                   {!photo ? (
-                    <div class='relative inline-flex items-center justify-center ring-2 ring-purple-300 dark:ring-gray-500 w-24 h-24 overflow-hidden bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 rounded-full dark:bg-gray-600'>
-                      <span class='font-medium text-5xl text-white dark:text-gray-300 uppercase'>
+                    <div className='relative inline-flex items-center justify-center ring-2 ring-purple-300 dark:ring-gray-500 w-24 h-24 overflow-hidden bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 rounded-full dark:bg-gray-600'>
+                      <span className='font-medium text-5xl text-white dark:text-gray-300 uppercase'>
                         {name.slice(0, 2)}
                       </span>
                     </div>
                   ) : (
                     <img
-                      class='w-24 h-24 rounded-full ring-2 object-cover ring-purple-300 dark:ring-gray-500'
+                      className='w-24 h-24 rounded-full ring-2 object-cover ring-purple-300 dark:ring-gray-500'
                       src={photo}
                       alt='Bordered avatar'
                     />
@@ -241,12 +260,12 @@ function UserProfileModal({
                   d='M5 13V1m0 0L1 5m4-4 4 4'
                 />
               </svg>
-              Update Profile
+              Update.Profile
             </button>
           </form>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
