@@ -105,7 +105,7 @@ function ItemModal({ token, dropdownRefItem, item, setItem, itemId, setItemId, f
                   updatePurchased(e);
                 }}
               />
-              <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+              <div className="w-9 h-5 bg-[ffffff1a] peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-slate-900 after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-slate-600 bg-opacity-60"></div>
               <span className='ms-3 text-sm font-medium text-gray-900 dark:text-gray-300'>
                 {item.purchased ? 'Purchased!' : 'Not purchased'}
               </span>
@@ -134,7 +134,7 @@ function ItemModal({ token, dropdownRefItem, item, setItem, itemId, setItemId, f
             <a href={item.link}>
               <button
                 type='button'
-                className='mx-0 mb-8 text-white bg-blue-600 hover:border hover:bg-white hover:text-black hover:border-6 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-2 py-1 inline-flex justify-center w-30 text-center'
+                className='mx-0 mb-8 text-white bg-slate-900 bg-opacity-60 hover:border hover:bg-zinc-100 hover:text-black hover:border-6 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-2 py-1 inline-flex justify-center w-30 text-center'
               >
                 Link to Buy
               </button>
