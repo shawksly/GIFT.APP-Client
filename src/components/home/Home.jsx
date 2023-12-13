@@ -16,13 +16,23 @@ import FriendsList from '../friendsList/FriendsList';
 import ItemEditModal from '../itemModal/ItemEditModal';
 import ListToggle from '../listToggle/ListToggle';
 
-function Home({ isLoggedIn, token, updateUser, clearUser, userId, name, mail, photo }) {
+function Home({
+  isLoggedIn,
+  token,
+  updateUser,
+  clearUser,
+  userId,
+  name,
+  mail,
+  photo,
+}) {
   const [listDisplay, setListDisplay] = useState(true);
   const [lists, setLists] = useState([]);
   const [gifts, setGifts] = useState([]);
   const [giftsId, setGiftsId] = useState('');
   const [item, setItem] = useState([]);
   const [itemId, setItemId] = useState([]);
+  const [currentList, setCurrentList] = useState('');
   const [currentListId, setCurrentListId] = useState('');
   const [friendsList, setFriendsList] = useState([]);
   const [friendRequestsList, setFriendRequestsList] = useState([]);
@@ -57,6 +67,13 @@ function Home({ isLoggedIn, token, updateUser, clearUser, userId, name, mail, ph
     buttonRef: buttonRefFriendsList,
     isComponentVisible: isComponentVisibleFriendsList,
     setIsComponentVisible: setIsComponentVisibleFriendsList,
+  } = useComponentVisible(false);
+
+  const {
+    dropDownRef: dropdownRefEditItem,
+    buttonRef: buttonRefEditItem,
+    isComponentVisible: isComponentVisibleEditItem,
+    setIsComponentVisible: setIsComponentVisibleEditItem,
   } = useComponentVisible(false);
 
   async function fetchLists() {
@@ -207,11 +224,15 @@ function Home({ isLoggedIn, token, updateUser, clearUser, userId, name, mail, ph
             <ItemModal
               key='itemModal'
               token={token}
+              userId={userId}
               ref={dropdownRefItem}
               item={item}
               setItem={setItem}
               itemId={itemId}
               setItemId={setItemId}
+              setIsComponentVisibleItem={setIsComponentVisibleItem}
+              buttonRefEditItem={buttonRefEditItem}
+              setIsComponentVisibleEditItem={setIsComponentVisibleEditItem}
               fetchGifts={fetchGifts}
             />
           )}
@@ -230,6 +251,7 @@ function Home({ isLoggedIn, token, updateUser, clearUser, userId, name, mail, ph
               fetchFriendsLists={fetchFriendsLists}
               friendsList={friendsList}
               setGiftsId={setGiftsId}
+              setCurrentList={setCurrentList}
               setCurrentListId={setCurrentListId}
               name={name}
               photo={photo}
@@ -237,12 +259,15 @@ function Home({ isLoggedIn, token, updateUser, clearUser, userId, name, mail, ph
               setDisplayFriends={setDisplayFriends}
               setIsComponentVisibleEditList={setIsComponentVisibleEditList}
               buttonRefEditList={buttonRefEditList}
-              setIsComponentVisibleFriendsList={setIsComponentVisibleFriendsList}
+              setIsComponentVisibleFriendsList={
+                setIsComponentVisibleFriendsList
+              }
             />
           ) : (
             <ItemList
               key='gifts'
               token={token}
+              currentList={currentList}
               gifts={gifts}
               giftsId={giftsId}
               setItem={setItem}
@@ -266,6 +291,8 @@ function Home({ isLoggedIn, token, updateUser, clearUser, userId, name, mail, ph
         setDisplayFriends={setDisplayFriends}
         setIsComponentVisibleItem={setIsComponentVisibleItem}
         giftsId={giftsId}
+        setItem={setItem}
+        setItemId={setItemId}
         currentListId={currentListId}
         isComponentVisibleEditList={isComponentVisibleEditList}
         setIsComponentVisibleEditList={setIsComponentVisibleEditList}
@@ -274,6 +301,9 @@ function Home({ isLoggedIn, token, updateUser, clearUser, userId, name, mail, ph
         buttonRefFriendsList={buttonRefFriendsList}
         isComponentVisibleFriendsList={isComponentVisibleFriendsList}
         setIsComponentVisibleFriendsList={setIsComponentVisibleFriendsList}
+        dropdownRefEditItem={dropdownRefEditItem}
+        isComponentVisibleEditItem={isComponentVisibleEditItem}
+        setIsComponentVisibleEditItem={setIsComponentVisibleEditItem}
         displayFriends={displayFriends}
         friendsList={friendsList}
         friendRequestsList={friendRequestsList}
@@ -282,8 +312,8 @@ function Home({ isLoggedIn, token, updateUser, clearUser, userId, name, mail, ph
         name={name}
         mail={mail}
         photo={photo}
+        item={item}
       />
-      
     </>
   );
 }
