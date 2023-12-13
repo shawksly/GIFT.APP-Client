@@ -209,7 +209,10 @@ function Home({ isLoggedIn, token, updateUser, clearUser, userId, name, mail, ph
               token={token}
               ref={dropdownRefItem}
               item={item}
+              setItem={setItem}
               itemId={itemId}
+              setItemId={setItemId}
+              fetchGifts={fetchGifts}
             />
           )}
         </AnimatePresence>

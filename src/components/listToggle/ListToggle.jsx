@@ -59,7 +59,7 @@ function ListToggle({ displayFriends, setDisplayFriends }) {
           <motion.div
             // variants={containerVariants}
             // initial='left'
-            // animate='right-'
+            // animate='right'
             className={`box relative w-60 h-16 bg-zinc-300 rounded-[20px] flex items-center p-1 transform ${
               displayFriends
                 ? 'bg-black justify-end'
