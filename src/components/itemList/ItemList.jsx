@@ -79,9 +79,30 @@ function ItemList({
                       </h5>
                     </div>
                   </div>
-                  <p className='text-xs duration-200 group-hover/list:text-[#222] lowercase overflow-hidden text-ellipsis whitespace-nowrap'>
-                    {gift.description ? gift.description : <br/>}
-                  </p>
+                  <div className='flex justify-between'>
+                    <p className='text-xs duration-200 group-hover/list:text-[#222] lowercase overflow-hidden text-ellipsis whitespace-nowrap'>
+                      {gift.description ? gift.description : <br />}
+                    </p>
+                    <div className='shrink-0 me-0 px-0 pb-0  box-border font-poppins relative w-[20px] h-[20px]'>
+                      {gift.purchased && (
+                      <svg
+                        className='absolute w-4 h-4 bottom-0 -right-1 text-sm text-center font-poppins text-white group-hover/list:text-[#222]'
+                        aria-hidden='true'
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 21 21'
+                      >
+                        <path
+                          stroke='currentColor'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth='2'
+                          d='m6.072 10.072 2 2 6-4m3.586 4.314.9-.9a2 2 0 0 0 0-2.828l-.9-.9a2 2 0 0 1-.586-1.414V5.072a2 2 0 0 0-2-2H13.8a2 2 0 0 1-1.414-.586l-.9-.9a2 2 0 0 0-2.828 0l-.9.9a2 2 0 0 1-1.414.586H5.072a2 2 0 0 0-2 2v1.272a2 2 0 0 1-.586 1.414l-.9.9a2 2 0 0 0 0 2.828l.9.9a2 2 0 0 1 .586 1.414v1.272a2 2 0 0 0 2 2h1.272a2 2 0 0 1 1.414.586l.9.9a2 2 0 0 0 2.828 0l.9-.9a2 2 0 0 1 1.414-.586h1.272a2 2 0 0 0 2-2V13.8a2 2 0 0 1 .586-1.414Z'
+                        />
+                      </svg>
+                      )}
+                    </div>
+                  </div>
                 </div>
                 {/* <div className='m-0 box-border font-poppins text-white absolute -bottom-6 right-14 flex flex-row duration-200 group-hover/list:bottom-0'>
                   <button
