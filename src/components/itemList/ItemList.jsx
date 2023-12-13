@@ -41,7 +41,7 @@ function ItemList({
     >
       <ListEmojiBar />
       {/* <Avatars /> */}
-      <SaveList />
+    
 
       <div className='m-0 px-0 pb-0 pt-2 box-border font-poppins min-h-screen min-w-[100vw] flex items-center justify-center relative overflow-hidden bg-[#222]'>
         <div className='m-0 box-border font-poppins min-w-[350px] max-w-[350px] min-h-[200px] bg-[#ffffff1a] bg-opacity-25 rounded-[10px] z-10 p-5'>
