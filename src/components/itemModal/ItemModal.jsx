@@ -17,6 +17,7 @@ function ItemModal({
   const [purchased, setPurchased] = useState(false);
 
   useEffect(() => {
+    setPurchased(item.purchased)
     updatePurchased();
   }, [token, itemId, purchased]);
 
