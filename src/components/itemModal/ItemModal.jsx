@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 function ItemModal({
@@ -14,14 +14,12 @@ function ItemModal({
   setIsComponentVisibleEditItem,
   fetchGifts,
 }) {
-  const [purchased, setPurchased] = useState(false);
 
-  useEffect(() => {
-    setPurchased(item.purchased)
-    updatePurchased();
-  }, [token, itemId, purchased]);
+// const [purchasedCheck, setPurchasedCheck] = useState(item.purchased);
+const [isUpdating, setIsUpdating] = useState(false);
 
-  async function updatePurchased() {
+  async function updatePurchased(newPurchasedState) {
+    setIsUpdating(true);
     try {
       let response = await fetch(
         `http://localhost:4000/gifts/purchase/${itemId}`,
@@ -31,7 +29,7 @@ function ItemModal({
           }),
           method: 'PATCH',
           body: JSON.stringify({
-            purchased: purchased,
+            purchased: newPurchasedState,
           }),
         }
       );
@@ -49,6 +47,8 @@ function ItemModal({
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsUpdating(false);
     }
   }
 
@@ -152,8 +152,9 @@ function ItemModal({
                 type='checkbox'
                 className='sr-only peer'
                 checked={item.purchased}
+                disabled={isUpdating}
                 onChange={() => {
-                  setPurchased((prev) => !prev);
+                  updatePurchased(!item.purchased);
                 }}
               />
               <div className="w-9 h-5 bg-[ffffff1a] peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-slate-900 after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-gray-800 bg-opacity-60"></div>
@@ -162,6 +163,7 @@ function ItemModal({
               </span>
             </label>
           </li>
+          {isUpdating && <span>Updating...</span>}
           {userId === item.owner && (
             <li>
               <button
