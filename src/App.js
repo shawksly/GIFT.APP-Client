@@ -1,14 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
-/*
-import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Auth from './components/auth/Auth'
-*/
-
-
-
-
 import Auth from './components/auth/Auth';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/home/Home';
@@ -17,15 +6,7 @@ import { useState, useEffect, useRef } from 'react';
 import AddItem from './components/addItem/AddItem';
 import AddList from './components/addList/AddList.jsx';
 import ItemList from './components/itemList/ItemList';
-import List from './components/list/List.jsx';
-// import ImageTestII from './components/imageTestII/ImageTestII'
-import ItemModal from './components/itemModal/ItemModal';
-import ItemEditModal from './components/itemModal/ItemEditModal'
-import ListToggle from './components/listToggle/ListToggle';
-import FriendsList from './components/friendsList/FriendsList.jsx'
-import BackButton from './components/backButton/BackButton'
-import UserProfileModal from './components/userProfileModal/UserProfileModal';
-
+import ItemEditModal from './components/itemModal/ItemEditModal';
 
 function App() {
   const [token, setToken] = useState('');
@@ -91,7 +72,7 @@ function App() {
     // setIsLoggedIn(false);
     isLoggedIn.current = false;
 
-    console.log("User Cleared")
+    console.log('User Cleared');
   }
 
   return (
@@ -113,28 +94,36 @@ function App() {
           }
         />
 
-        <Route path="/auth" element={<Auth updateUser={updateUser} />} />
-        <Route path="/list" element={<ListGroup updateUser={updateUser} />} />
-        <Route path="/add" element={<AddItem updateUser={updateUser} />} />
-        <Route path="/addlist" element={<AddList updateUser={updateUser} />} />
-        <Route path="/itemlist" element={<ItemList updateUser={updateUser} />} />
-        <Route path="/test" element={<ItemEditModal updateUser={updateUser} />} />
-        {/* <Route path="/test2" element={<ImageTestII updateUser={updateUser} />} /> */}
-{/* <Route path='/list2' element={<List />} /> */}
-<Route path='/home' element={<Home isLoggedIn={isLoggedIn}
+        <Route path='/auth' element={<Auth updateUser={updateUser} />} />
+        <Route path='/list' element={<ListGroup updateUser={updateUser} />} />
+        <Route path='/add' element={<AddItem updateUser={updateUser} />} />
+        <Route path='/addlist' element={<AddList updateUser={updateUser} />} />
+        <Route
+          path='/itemlist'
+          element={<ItemList updateUser={updateUser} />}
+        />
+        <Route
+          path='/test'
+          element={<ItemEditModal updateUser={updateUser} />}
+        />
+        <Route
+          path='/home'
+          element={
+            <Home
+              isLoggedIn={isLoggedIn}
               token={token}
               updateUser={updateUser}
               clearUser={clearUser}
               userId={userId}
               name={name}
               mail={mail}
-              photo={photo} />} />
-
-
+              photo={photo}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-

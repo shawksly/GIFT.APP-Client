@@ -4,17 +4,10 @@ import useComponentVisible from '../../utils/useComponentVisible';
 import BottomBar from '../bottomBar/BottomBar';
 import ListGroup from '../listGroup/ListGroup';
 import ItemList from '../itemList/ItemList';
-import AddItem from '../addItem/AddItem';
-import TopNav from '../topNav/TopNav';
 import { useNavigate } from 'react-router';
-import TwoBoxes from '../twoBoxes/TwoBoxes';
-import Avatars from '../avatars/Avatars';
-import AllSearch from '../search/AllSearch';
 import ItemModal from '../itemModal/ItemModal';
-import FriendsList from '../friendsList/FriendsList';
-
-import ItemEditModal from '../itemModal/ItemEditModal';
-import ListToggle from '../listToggle/ListToggle';
+import TopNav from '../topNav/TopNav';
+import Avatars from '../avatars/Avatars';
 
 function Home({
   isLoggedIn,
@@ -216,8 +209,6 @@ function Home({
     <>
       {/* <TopNav clearUser={clearUser} /> */}
       {/* <Avatars /> */}
-      {/* <AllSearch /> */}
-      {/* <TwoBoxes /> */}
       <div className='relative'>
         <AnimatePresence>
           {isComponentVisibleItem && (

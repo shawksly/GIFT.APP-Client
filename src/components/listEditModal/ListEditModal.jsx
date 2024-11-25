@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import useComponentVisible from '../../utils/useComponentVisible';
 
 function ItemEditModal({
   token,

@@ -1,8 +1,6 @@
 import { React, useState } from 'react';
 
 import { useNavigate } from 'react-router';
-import PropTypes from 'prop-types';
-import Login from '../login/Login';
 
 function Signup({ updateUser, setNewUserStatus }) {
   const [userName, setUserName] = useState('');
@@ -20,10 +18,9 @@ function Signup({ updateUser, setNewUserStatus }) {
     console.log(email);
     console.log(password);
     console.log(userName);
-    console.log({image});
+    console.log({ image });
 
     try {
-
       let imgURL;
 
       if (image) {
@@ -79,7 +76,6 @@ function Signup({ updateUser, setNewUserStatus }) {
       } else {
         console.log('Signup Missed');
       }
-
     } catch (error) {
       console.log(error);
     }

@@ -1,27 +1,24 @@
-import { useState } from 'react'
-import Login from '../auth/login/Login'
-import Signup from '../auth/signup/Signup'
+import { useState } from 'react';
+import Login from '../auth/login/Login';
+import Signup from '../auth/signup/Signup';
 
 function Auth({ updateUser }) {
-
-  const [newUserStatus, setNewUserStatus] = useState(true)
+  const [newUserStatus, setNewUserStatus] = useState(true);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-slate-500 ">
-      { !!newUserStatus ? (
+    <div className='flex flex-col items-center justify-center h-screen bg-slate-500 '>
+      {!!newUserStatus ? (
         <Signup updateUser={updateUser} setNewUserStatus={setNewUserStatus} />
       ) : (
         <Login updateUser={updateUser} setNewUserStatus={setNewUserStatus} />
       )}
     </div>
-    )
-  }
-  
-  export default Auth
-  
-  // const [loginPane, setLoginPane] = useState(false);
+  );
+}
 
+export default Auth;
 
+// const [loginPane, setLoginPane] = useState(false);
 
 // function Auth({ updateUser }) {
 

@@ -1,12 +1,7 @@
 import { useEffect, Fragment } from 'react';
 import { motion } from 'framer-motion';
-import ItemList from '../itemList/ItemList';
-import TwoBoxes from '../twoBoxes/TwoBoxes';
 import ListToggle from '../listToggle/ListToggle';
 import Avatars from '../avatars/Avatars';
-import BackButton from '../backButton/BackButton';
-
-import './ListGroup.css';
 
 function ListGroup({
   token,
@@ -73,7 +68,16 @@ function ListGroup({
             setDisplayFriends={setDisplayFriends}
           />
           <div className='relative m-0 box-border font-poppins min-w-[350px] max-w-[350px] min-h-[400px] bg-[#ffffff1a] bg-opacity-25 rounded-[10px] z-10 p-5'>
-            {displayFriends && <Avatars token={token} fetchFriends={fetchFriends} friendsList={friendsList} setIsComponentVisibleFriendsList={setIsComponentVisibleFriendsList} />}
+            {displayFriends && (
+              <Avatars
+                token={token}
+                fetchFriends={fetchFriends}
+                friendsList={friendsList}
+                setIsComponentVisibleFriendsList={
+                  setIsComponentVisibleFriendsList
+                }
+              />
+            )}
             <h3 className='mx-0 mt-0 mb-[25px] px-0 pb-0 pt-2 box-border font-poppins text-white'>
               {!displayFriends ? 'GIFT.LISTS' : `FRIENDS.LISTS`}
             </h3>
@@ -88,7 +92,7 @@ function ListGroup({
                     <div className='mx-0 mb-0 mt-2.5 p=10 box-border font-poppins relative overflow-hidden p-2.5 gap-2.5 rounded-[10px] bg-[#0000001a] cursor-pointer transition-all duration-200 ease-linear hover:bg-zinc-100 hover:scale-[1.03] hover:translate-x-[6px] hover:translate-y-[-3px] group/list'>
                       <div
                         onClick={() => {
-                          setCurrentList(list)
+                          setCurrentList(list);
                           setGiftsId(list._id);
                           setListDisplay(false);
                         }}
@@ -133,7 +137,7 @@ function ListGroup({
                           id='avatarButton'
                           className='absolute m-0 p-0 box-border bottom-0 -right-14 w-14 h-20 object-cover border-2 border-purple-300 rounded-[10px] duration-200 group-hover/list:-right-0'
                           src={list.img}
-                          alt='Friend Image'
+                          alt='Friend'
                         />
                       ) : (
                         <span className='absolute m-0 p-0 box-border bottom-0 -right-14 w-14 h-20 text-center flex flex-col justify-center font-medium text-2xl border-2 bg-gradient-to-r from-purple-600 via-purple-700 to-blue-800 bg-opacity-20 border-purple-300 rounded-[10px] text-zinc-100 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 duration-200 group-hover/list:-right-0 uppercase min-w-0'>

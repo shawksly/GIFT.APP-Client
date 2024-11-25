@@ -9,7 +9,12 @@ export default function useComponentVisible(initialIsVisible) {
   const buttonRef = useRef(null);
 
   const handleClickOutside = (event) => {
-    if (dropDownRef.current && (!dropDownRef.current.contains(event.target) /* || buttonRef.current.contains(event.target) */ )) {
+    if (
+      dropDownRef.current &&
+      !dropDownRef.current.contains(
+        event.target
+      ) /* || buttonRef.current.contains(event.target) */
+    ) {
       setIsComponentVisible(false);
     }
   };

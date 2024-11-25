@@ -14,9 +14,8 @@ function ItemModal({
   setIsComponentVisibleEditItem,
   fetchGifts,
 }) {
-
-// const [purchasedCheck, setPurchasedCheck] = useState(item.purchased);
-const [isUpdating, setIsUpdating] = useState(false);
+  // const [purchasedCheck, setPurchasedCheck] = useState(item.purchased);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   async function updatePurchased(newPurchasedState) {
     setIsUpdating(true);
@@ -80,31 +79,31 @@ const [isUpdating, setIsUpdating] = useState(false);
       className='fixed z-20 flex justify-center items-center'
     >
       <div className='box-border w-96 h-auto font-poppins bg-gradient-to-br from-gray-500 via-blue-300 to-purple-20 justify-center items-center relative overflow-hidden border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
-      <button
-              type='button'
-              className='absolute top-4 right-4 text-gray-400 bg-gradient-to-r from-slate-900 to-slate-900 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white'
-              data-modal-toggle='crud-modal'
-              onClick={() => {
-                setIsComponentVisibleItem(false);
-              }}
-            >
-              <svg
-                className='w-3 h-3'
-                aria-hidden='true'
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 14 14'
-              >
-                <path
-                  stroke='currentColor'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth='2'
-                  d='m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6'
-                />
-              </svg>
-              <span className='sr-only'>Close modal</span>
-            </button>
+        <button
+          type='button'
+          className='absolute top-4 right-4 text-gray-400 bg-gradient-to-r from-slate-900 to-slate-900 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white'
+          data-modal-toggle='crud-modal'
+          onClick={() => {
+            setIsComponentVisibleItem(false);
+          }}
+        >
+          <svg
+            className='w-3 h-3'
+            aria-hidden='true'
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 14 14'
+          >
+            <path
+              stroke='currentColor'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6'
+            />
+          </svg>
+          <span className='sr-only'>Close modal</span>
+        </button>
         <h5 className='mb-4 mt-8 mx-8 text-xl font-medium text-gray-200 dark:text-gray-400 capitalize'>
           {item.title}
         </h5>

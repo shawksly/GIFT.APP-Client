@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import './Avatars.css';
 
 function Avatars({
   token,

@@ -1,5 +1,4 @@
 import { React, useState } from 'react';
-import PropTypes from 'prop-types';
 
 function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
   const [title, setTitle] = useState('');

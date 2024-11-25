@@ -1,39 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './ListToggle.css';
 
 function ListToggle({ displayFriends, setDisplayFriends }) {
-  const containerVariants = {
-    left: {
-      backgroundColor: 'black',
-      color: '#f4f4f5',
-      justifyContent: 'flex-start',
-    },
-    right: {
-      backgroundColor: 'black',
-      color: '#f4f4f5',
-      justifyContent: 'flex-end',
-      transition: {
-        type: 'spring',
-        stiffness: 120,
-      },
-    },
-  };
+  // const containerVariants = {
+  //   left: {
+  //     backgroundColor: 'black',
+  //     color: '#f4f4f5',
+  //     justifyContent: 'flex-start',
+  //   },
+  //   right: {
+  //     backgroundColor: 'black',
+  //     color: '#f4f4f5',
+  //     justifyContent: 'flex-end',
+  //     transition: {
+  //       type: 'spring',
+  //       stiffness: 120,
+  //     },
+  //   },
+  // };
 
-  const ballVariants = {
-    left: {
-      width: '6rem',
-      backgroundColor: '#14532d',
-    },
-    right: {
-      width: '8rem',
-      backgroundColor: '#7f1d1d',
-      transition: {
-        type: 'spring',
-        stiffness: 120,
-      },
-    },
-  };
+  // const ballVariants = {
+  //   left: {
+  //     width: '6rem',
+  //     backgroundColor: '#14532d',
+  //   },
+  //   right: {
+  //     width: '8rem',
+  //     backgroundColor: '#7f1d1d',
+  //     transition: {
+  //       type: 'spring',
+  //       stiffness: 120,
+  //     },
+  //   },
+  // };
 
   return (
     <div className='mt-4 mb-3 flex items-center justify-center '>

@@ -1,10 +1,7 @@
 import { useEffect, Fragment } from 'react';
 import { motion } from 'framer-motion';
-import './ItemList.css';
 
-import ListEmojiBar from '../listEmojiBar/ListEmojiBar';
 import Avatars from '../avatars/Avatars';
-import SaveList from '../listEmojiBar/SaveList';
 import BackButton from '../backButton/BackButton';
 
 function ItemList({
@@ -45,12 +42,10 @@ function ItemList({
 
       <div className='m-0 px-0 pb-0 pt-2 box-border font-poppins min-h-screen min-w-[100vw] flex items-center justify-center relative overflow-hidden bg-[#222]'>
         <div className='flex flex-col content-center items-center justify-items-center'>
-            <div className='m-0 p-0 text-7xl'>
-              {currentList.emoji}
-            </div>
-            <div className='mb-3 mt-2 p-0 capitalize text-lg text-white'>
-              {currentList.title}
-            </div>
+          <div className='m-0 p-0 text-7xl'>{currentList.emoji}</div>
+          <div className='mb-3 mt-2 p-0 capitalize text-lg text-white'>
+            {currentList.title}
+          </div>
           <div className='m-0 box-border relative font-poppins min-w-[350px] max-w-[350px] min-h-[200px] bg-[#ffffff1a] bg-opacity-25 rounded-[10px] z-10 p-5'>
             <h3 className='mx-0 mt-0 mb-[25px] px-0 pb-0 pt-2 box-border font-poppins text-white'>
               ITEM.LISTS
