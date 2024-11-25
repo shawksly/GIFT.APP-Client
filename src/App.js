@@ -18,7 +18,7 @@ import AddItem from './components/addItem/AddItem';
 import AddList from './components/addList/AddList.jsx';
 import ItemList from './components/itemList/ItemList';
 import List from './components/list/List.jsx';
-import ImageTestII from './components/imageTestII/ImageTestII'
+// import ImageTestII from './components/imageTestII/ImageTestII'
 import ItemModal from './components/itemModal/ItemModal';
 import ItemEditModal from './components/itemModal/ItemEditModal'
 import ListToggle from './components/listToggle/ListToggle';
@@ -119,6 +119,7 @@ function App() {
         <Route path="/addlist" element={<AddList updateUser={updateUser} />} />
         <Route path="/itemlist" element={<ItemList updateUser={updateUser} />} />
         <Route path="/test" element={<ItemEditModal updateUser={updateUser} />} />
+        {/* <Route path="/test2" element={<ImageTestII updateUser={updateUser} />} /> */}
 {/* <Route path='/list2' element={<List />} /> */}
 <Route path='/home' element={<Home isLoggedIn={isLoggedIn}
               token={token}
