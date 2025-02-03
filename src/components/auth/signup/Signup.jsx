@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
-
 import { useNavigate } from 'react-router';
+import { baseUrl } from "../../../Urls";
 
 function Signup({ updateUser, setNewUserStatus }) {
   const [userName, setUserName] = useState('');
@@ -8,7 +8,7 @@ function Signup({ updateUser, setNewUserStatus }) {
   const [password, setPassword] = useState('');
   const [image, setImage] = useState('');
 
-  const signupRoute = 'http://localhost:4000/user/signup';
+  const signupRoute = `${baseUrl}/user/signup`;
 
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ function Signup({ updateUser, setNewUserStatus }) {
 
       if (image) {
         //! fetch to server endpoint to get the link (from s3)
-        const url = await fetch('http://localhost:4000/geturl')
+        const url = await fetch(`${baseUrl}/geturl`)
           .then((res) => res.json())
           .then((data) => {
             console.log('JSON DATA ', data);
@@ -46,7 +46,7 @@ function Signup({ updateUser, setNewUserStatus }) {
       }
 
       //! fetch to our server's db to post the link
-      let response = await fetch('http://localhost:4000/user/signup', {
+      let response = await fetch(`${baseUrl}/user/signup`, {
         headers: new Headers({
           'Content-Type': 'application/json',
         }),

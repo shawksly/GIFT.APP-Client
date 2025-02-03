@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { baseUrl } from "../../Urls";
 
 function ItemModal({
   token,
@@ -21,7 +22,7 @@ function ItemModal({
     setIsUpdating(true);
     try {
       let response = await fetch(
-        `http://localhost:4000/gifts/purchase/${itemId}`,
+        `${baseUrl}/gifts/purchase/${itemId}`,
         {
           headers: new Headers({
             'content-type': 'application/json',

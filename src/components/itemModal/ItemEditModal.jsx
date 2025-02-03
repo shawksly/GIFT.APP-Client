@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { baseUrl } from "../../Urls";
 
 function ItemEditModal({
   token,
@@ -48,7 +49,7 @@ function ItemEditModal({
 
       try {
         //! fetch to server endpoint to get the link (from s3)
-        const url = await fetch('http://localhost:4000/geturl')
+        const url = await fetch(`${baseUrl}/geturl`)
           .then((res) => res.json())
           .then((data) => {
             console.log('JSON DATA ', data);
@@ -80,7 +81,7 @@ function ItemEditModal({
 
     try {
       let response = await fetch(
-        `http://localhost:4000/gifts/update/${item._id}`,
+        `${baseUrl}/gifts/update/${item._id}`,
         {
           headers: new Headers({
             'content-type': 'application/json',

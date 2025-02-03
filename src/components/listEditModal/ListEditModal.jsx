@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { baseUrl } from "../../Urls";
 
 function ItemEditModal({
   token,
@@ -24,7 +25,7 @@ function ItemEditModal({
 
     try {
       let response = await fetch(
-        `http://localhost:4000/lists/${currentListId}`,
+        `${baseUrl}/lists/${currentListId}`,
         {
           headers: new Headers({
             'content-type': 'application/json',

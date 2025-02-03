@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
+import { baseUrl } from "../../Urls";
 
 function FriendsList({
   token,
@@ -15,7 +16,7 @@ function FriendsList({
     if (token && friendEmail.current)
       try {
         let response = await fetch(
-          `http://localhost:4000/user/friends/${friendEmail.current}`,
+          `${baseUrl}/user/friends/${friendEmail.current}`,
           {
             headers: new Headers({
               'content-type': 'application/json',
@@ -44,7 +45,7 @@ function FriendsList({
     if (token && friendEmail.current)
       try {
         let response = await fetch(
-          `http://localhost:4000/user/friends/remove/${friendEmail.current}`,
+          `${baseUrl}/user/friends/remove/${friendEmail.current}`,
           {
             headers: new Headers({
               'content-type': 'application/json',

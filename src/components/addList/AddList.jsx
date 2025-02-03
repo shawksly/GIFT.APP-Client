@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { baseUrl } from "../../Urls";
 
 function AddList({ token, fetchLists, setIsComponentVisibleAdd }) {
   const [title, setTitle] = useState('');
@@ -9,7 +10,7 @@ function AddList({ token, fetchLists, setIsComponentVisibleAdd }) {
     e.preventDefault();
 
     try {
-      let response = await fetch('http://localhost:4000/lists/create', {
+      let response = await fetch(`${baseUrl}/lists/create`, {
         headers: new Headers({
           'content-type': 'application/json',
           authorization: token,

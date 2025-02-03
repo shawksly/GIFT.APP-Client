@@ -5,12 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router';
 import PropTypes from 'prop-types';
+import { baseUrl } from "../../../Urls";
 
 function Login({ updateUser, setNewUserStatus }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  let loginRoute = 'http://localhost:4000/user/login';
+  let loginRoute = `${baseUrl}/user/login`;
 
   const navigate = useNavigate();
 
@@ -109,7 +110,7 @@ function Login({ loginPane, setLoginPane, updateUser }) {
     e.preventDefault();
 
     try {
-      let response = await fetch("http://localhost:4000/user/login", {
+      let response = await fetch(`${baseUrl}/user/login`, {
         headers: new Headers({
           "content-type": "application/json",
         }),

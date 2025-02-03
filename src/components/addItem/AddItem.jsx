@@ -1,4 +1,5 @@
 import { React, useState } from 'react';
+import { baseUrl } from "../../Urls"
 
 function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
   const [title, setTitle] = useState('');
@@ -8,7 +9,7 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
   const [image, setImage] = useState('');
   const [link, setLink] = useState('');
 
-  const addGiftRoute = `http://localhost:4000/gifts/create/${giftsId}`;
+  const addGiftRoute = `${baseUrl}/gifts/create/${giftsId}`;
 
   async function addGiftInput(e) {
     e.preventDefault();
@@ -34,7 +35,7 @@ function AddItem({ token, fetchGifts, setIsComponentVisibleAdd, giftsId }) {
 
       if (image) {
         //! fetch to server endpoint to get the link (from s3)
-        const url = await fetch('http://localhost:4000/geturl')
+        const url = await fetch(`${baseUrl}/geturl`)
           .then((res) => res.json())
           .then((data) => {
             console.log('JSON DATA ', data);

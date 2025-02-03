@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 import ItemModal from '../itemModal/ItemModal';
 import TopNav from '../topNav/TopNav';
 import Avatars from '../avatars/Avatars';
+import { baseUrl } from "../../Urls";
 
 function Home({
   isLoggedIn,
@@ -36,10 +37,10 @@ function Home({
 
   const navigate = useNavigate();
 
-  let listsRoute = `http://localhost:4000/lists/list/owner/${userId}`;
-  let friendsRoute = `http://localhost:4000/user/friends/list`;
-  let giftsRoute = `http://localhost:4000/gifts/gift/${giftsId}`;
-  let friendsListsRoute = `http://localhost:4000/lists/friends`;
+  let listsRoute = `${baseUrl}/lists/list/owner/${userId}`;
+  let friendsRoute = `${baseUrl}/user/friends/list`;
+  let giftsRoute = `${baseUrl}/gifts/gift/${giftsId}`;
+  let friendsListsRoute = `${baseUrl}/lists/friends`;
 
   const {
     dropDownRef: dropdownRefItem,

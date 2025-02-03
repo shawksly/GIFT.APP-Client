@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { baseUrl } from "../../Urls";
 
 function UserProfileModal({
   token,
@@ -28,7 +29,7 @@ function UserProfileModal({
 
       try {
         //! fetch to server endpoint to get the link (from s3)
-        const url = await fetch('http://localhost:4000/geturl')
+        const url = await fetch(`${baseUrl}/geturl`)
           .then((res) => res.json())
           .then((data) => {
             console.log('JSON DATA ', data);
@@ -56,7 +57,7 @@ function UserProfileModal({
     console.log(body);
 
     try {
-      let response = await fetch(`http://localhost:4000/user/${userId}`, {
+      let response = await fetch(`${baseUrl}/user/${userId}`, {
         headers: new Headers({
           'content-type': 'application/json',
           authorization: token,
